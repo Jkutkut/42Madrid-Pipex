@@ -6,9 +6,11 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 09:53:03 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/04/06 09:56:45 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/04/06 10:00:03 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "../include/pipex.h"
 
 int	main(int argc, char **argv, char **envp)
 {
