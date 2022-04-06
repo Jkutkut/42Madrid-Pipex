@@ -1,33 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   tools.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/06 09:57:44 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/04/06 10:47:49 by jre-gonz         ###   ########.fr       */
+/*   Created: 2022/04/06 10:47:56 by jre-gonz          #+#    #+#             */
+/*   Updated: 2022/04/06 10:49:05 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
+#ifndef TOOLS_H
+# define TOOLS_H
 
-# include <stdio.h>
-# include <unistd.h>
-# include <stdlib.h>
+# include "pipex.h"
 
-# include <fcntl.h>
-# include <string.h>
-
-# include <sys/wait.h>
-# include <errno.h>
-# include <sys/stat.h>
-
-# include "../include/pipex_msg.h"
-
-# include "../src/libft/libft.h"
-
-# include "tools.h"
+void	end(int endtype, char *msg);
 
 #endif

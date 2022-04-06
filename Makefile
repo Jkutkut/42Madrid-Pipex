@@ -21,8 +21,10 @@ NAME		=	pipex
 LIBFT		=	src/libft/libft.a
 LIBFT_DIR	=	$(dir $(LIBFT))
 
+TOOLS		=	end.c
 
-SRCS		=	$(NAME).c
+SRCS		=	$(NAME).c \
+				${TOOLS:%=tools/%}
 
 OBJS		=	${SRCS:%.c=bin/%.o}
 
