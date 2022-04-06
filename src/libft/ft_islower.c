@@ -1,20 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.c                                            :+:      :+:    :+:   */
+/*   ft_islower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/06 09:53:03 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/04/06 10:03:04 by jre-gonz         ###   ########.fr       */
+/*   Created: 2022/02/09 12:19:46 by jre-gonz          #+#    #+#             */
+/*   Updated: 2022/03/20 15:59:04 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/pipex.h"
-
-int	main(int argc, char **argv, char **envp)
+/**
+ * @brief Checks if the given character is lowercase.
+ * 
+ * @param c Character to check.
+ * @return int 0 if it is not lowercase, true otherwise.
+ */
+int	ft_islower(int c)
 {
-	if (argc != 5)
-		
-	return (0);
+	return (c >= 'a' && c <= 'z');
 }

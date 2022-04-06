@@ -1,20 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.c                                            :+:      :+:    :+:   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/06 09:53:03 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/04/06 10:03:04 by jre-gonz         ###   ########.fr       */
+/*   Created: 2022/01/18 16:24:56 by jre-gonz          #+#    #+#             */
+/*   Updated: 2022/03/20 13:38:39 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/pipex.h"
+int	ft_isupper(int c);
 
-int	main(int argc, char **argv, char **envp)
+/**
+ * @brief Converts a character to lowercase.
+ * 
+ * @param c Character to convert.
+ * @return int Lowercase character.
+ */
+int	ft_tolower(int c)
 {
-	if (argc != 5)
-		
-	return (0);
+	if (ft_isupper(c))
+		return (c + 32);
+	return (c);
 }

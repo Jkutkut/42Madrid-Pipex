@@ -1,20 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.c                                            :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/06 09:53:03 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/04/06 10:03:04 by jre-gonz         ###   ########.fr       */
+/*   Created: 2022/01/18 16:29:11 by jre-gonz          #+#    #+#             */
+/*   Updated: 2022/03/20 13:38:22 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/pipex.h"
+int	ft_islower(int c);
 
-int	main(int argc, char **argv, char **envp)
+/**
+ * @brief Upper-cases a character.
+ * 
+ * @param c Character to convert.
+ * @return int Converted character.
+ */
+int	ft_toupper(int c)
 {
-	if (argc != 5)
-		
-	return (0);
+	if (ft_islower(c))
+		return (c - 32);
+	return (c);
 }

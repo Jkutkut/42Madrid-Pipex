@@ -1,20 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.c                                            :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/06 09:53:03 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/04/06 10:03:04 by jre-gonz         ###   ########.fr       */
+/*   Created: 2021/11/30 19:01:01 by jkutkut           #+#    #+#             */
+/*   Updated: 2022/03/20 15:48:14 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/pipex.h"
+#include <stddef.h>
 
-int	main(int argc, char **argv, char **envp)
+/**
+ * @brief Sets the first n bytes of the memory area pointed by s to c.
+ * 
+ * @param s Pointer to the memory area.
+ * @param c Character to set.
+ * @param n Number of bytes to set.
+ * @return void* Same pointer as s.
+ */
+void	*ft_memset(void *s, int c, size_t n)
 {
-	if (argc != 5)
-		
-	return (0);
+	unsigned char	*p;
+
+	p = s;
+	while (n-- > 0)
+		*p++ = (char) c;
+	return (s);
 }

@@ -1,20 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.c                                            :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/06 09:53:03 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/04/06 10:03:04 by jre-gonz         ###   ########.fr       */
+/*   Created: 2022/01/25 09:00:36 by jre-gonz          #+#    #+#             */
+/*   Updated: 2022/03/20 15:46:46 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/pipex.h"
+#include <stddef.h>
 
-int	main(int argc, char **argv, char **envp)
+void	ft_putstr_fd(char *s, int fd);
+void	ft_putchar_fd(char c, int fd);
+
+/**
+ * @brief Prints the string s to the file descriptor fd with '\n' at the end.
+ * 
+ * @param s String to print.
+ * @param fd File descriptor.
+ */
+void	ft_putendl_fd(char *s, int fd)
 {
-	if (argc != 5)
-		
-	return (0);
+	if (s == NULL)
+		return ;
+	ft_putstr_fd(s, fd);
+	ft_putchar_fd('\n', fd);
 }
