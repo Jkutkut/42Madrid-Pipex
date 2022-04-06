@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 09:57:44 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/04/06 10:47:49 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/04/06 10:57:22 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,8 @@
 # include "../src/libft/libft.h"
 
 # include "tools.h"
+
+# define FD_INPUT 0
+# define FD_OUTPUT 1
 
 #endif
