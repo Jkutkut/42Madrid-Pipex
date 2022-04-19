@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 10:48:50 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/04/19 13:08:53 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/04/19 16:03:40 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,8 @@ static char	*make_path(char *path, char *cmd)
 
 static char	*end_get_path(char *cmd, char **path_array, char *v)
 {
-	if (cmd)
-		free(cmd);
+	// if (cmd)
+	// 	free(cmd);
 	free_string_arr(path_array);
 	return (v);
 }
