@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 09:53:03 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/04/19 10:48:23 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/04/19 10:50:12 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	end_error_file(char *file)
 	exit(1);
 }
 
-static void	child_proccess(int fd[2], char **argv, char **env)
+static void	child_proccess(int fd[2], char **argv, char **envp)
 {
 	int		fd_file;
 	char	*path;
@@ -34,7 +34,7 @@ static void	child_proccess(int fd[2], char **argv, char **env)
 	dup2(fd[PIPE_WRITE], STDOUT);
 	close(fd[PIPE_WRITE]);
 	
-	path = get_path(argv[CMD_1], env);
+	path = get_path(argv[CMD_1], envp);
 }
 
 int	main(int argc, char **argv, char **envp)
