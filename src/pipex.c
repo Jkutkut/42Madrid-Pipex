@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 09:53:03 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/04/19 12:35:42 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/04/19 13:43:35 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ static void	child_proccess(int fd[2], char **argv, char **envp)
 {
 	int		fd_file;
 	char	*path;
+	char	**cmd;
 
 	close(fd[PIPE_READ]);
 	fd_file = open(argv[F_INPUT], O_RDWR);
@@ -34,8 +35,17 @@ static void	child_proccess(int fd[2], char **argv, char **envp)
 	// dup2(fd[PIPE_WRITE], STDOUT);
 	// close(fd[PIPE_WRITE]);
 	
-	path = get_path(argv[CMD_1], envp);
+	cmd = ft_split(argv[CMD_1], ' ');
+	if (!cmd)
+		return ; // TODO
+	path = get_path(cmd[0], envp);
+	if (!path)
+		return ; // TODO
 	printf("path: %s\n", path);
+	if (execve(path, cmd, envp) == -1)
+	{
+		ft_putstr_fd("pipex: command not found: ", STDERROR);
+	}
 }
 
 int	main(int argc, char **argv, char **envp)

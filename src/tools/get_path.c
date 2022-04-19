@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 10:48:50 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/04/19 12:23:47 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/04/19 13:08:53 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,18 +24,18 @@ static void	free_string_arr(char **arr)
 	free(arr);
 }
 
-static char	*get_cmd(char *cmd_full)
-{
-	char	**cmd_array;
-	char	*cmd;
+// static char	*get_cmd(char *cmd_full)
+// {
+// 	char	**cmd_array;
+// 	char	*cmd;
 
-	cmd_array = ft_split(cmd_full, ' ');
-	if (!cmd_array)
-		return (NULL);
-	cmd = ft_strdup(cmd_array[0]);
-	free_string_arr(cmd_array);
-	return (cmd);
-}
+// 	cmd_array = ft_split(cmd_full, ' ');
+// 	if (!cmd_array)
+// 		return (NULL);
+// 	cmd = ft_strdup(cmd_array[0]);
+// 	free_string_arr(cmd_array);
+// 	return (cmd);
+// }
 
 static char	*make_path(char *path, char *cmd)
 {
@@ -64,15 +64,13 @@ static char	*end_get_path(char *cmd, char **path_array, char *v)
 	return (v);
 }
 
-char	*get_path(char *cmd_full, char **envp)
+char	*get_path(char *cmd, char **envp)
 {
 	char	**path_array;
-	char	*cmd;
 	int		i;
 	char	*path;
 	int		fd;
 
-	cmd = get_cmd(cmd_full);
 	path_array = get_path_array(envp);
 	if (!path_array || !cmd)
 		return (end_get_path(cmd, path_array, NULL));
