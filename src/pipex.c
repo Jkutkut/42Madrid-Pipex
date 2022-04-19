@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 09:53:03 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/04/19 10:50:12 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/04/19 12:35:42 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,11 @@ static void	child_proccess(int fd[2], char **argv, char **envp)
 	
 	dup2(fd_file, STDIN);
 	close(fd_file);
-	dup2(fd[PIPE_WRITE], STDOUT);
-	close(fd[PIPE_WRITE]);
+	// dup2(fd[PIPE_WRITE], STDOUT);
+	// close(fd[PIPE_WRITE]);
 	
 	path = get_path(argv[CMD_1], envp);
+	printf("path: %s\n", path);
 }
 
 int	main(int argc, char **argv, char **envp)
