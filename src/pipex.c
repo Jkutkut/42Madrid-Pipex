@@ -6,11 +6,27 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 09:53:03 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/04/19 08:52:11 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/04/19 09:12:42 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/pipex.h"
+
+static void	end_error_file(char *file)
+{
+	ft_putstr_fd("Error when opening the file: ", 2);
+	ft_putendl_fd(file, 2);
+	exit(1);
+}
+
+static void	child_proccess(int fd[2], char **argv, char **env)
+{
+	int	fd_file;
+
+	fd_file = open(argv[FD_INPUT], O_RDWR);
+	if (fd_file == -1)
+		end_error_file(argv[FD_INPUT]);
+}
 
 int	main(int argc, char **argv, char **envp)
 {
