@@ -6,11 +6,11 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 10:48:50 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/04/19 12:18:07 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/04/19 12:23:47 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/tools.h"
+#include "../../include/tools.h"
 
 static void	free_string_arr(char **arr)
 {
@@ -29,7 +29,7 @@ static char	*get_cmd(char *cmd_full)
 	char	**cmd_array;
 	char	*cmd;
 
-	cmd_array = ft_split(cmd_full, " ");
+	cmd_array = ft_split(cmd_full, ' ');
 	if (!cmd_array)
 		return (NULL);
 	cmd = ft_strdup(cmd_array[0]);
@@ -37,7 +37,7 @@ static char	*get_cmd(char *cmd_full)
 	return (cmd);
 }
 
-static char	make_path(char *path, char *cmd)
+static char	*make_path(char *path, char *cmd)
 {
 	int		path_len;
 	int		cmd_len;
@@ -81,7 +81,7 @@ char	*get_path(char *cmd_full, char **envp)
 	{
 		path = make_path(path_array[i], cmd);
 		if (!path)
-			return (end_invalid_path(cmd, path_array));
+			return (end_get_path(cmd, path_array, NULL));
 		fd = open(path, O_RDONLY);
 		if (fd >= 0)
 		{

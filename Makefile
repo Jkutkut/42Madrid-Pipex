@@ -22,7 +22,8 @@ LIBFT		=	src/libft/libft.a
 LIBFT_DIR	=	$(dir $(LIBFT))
 
 TOOLS		=	end.c \
-				get_path_array.c
+				get_path_array.c \
+				get_path.c
 
 SRCS		=	$(NAME).c \
 				${TOOLS:%=tools/%}
