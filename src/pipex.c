@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 09:53:03 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/04/19 09:52:37 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/04/19 10:48:23 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,27 @@
 
 static void	end_error_file(char *file)
 {
-	ft_putstr_fd("Error when opening the file: ", 2);
-	ft_putendl_fd(file, 2);
+	ft_putstr_fd("No such file or directory: ", STDERROR);
+	ft_putendl_fd(file, STDERROR);
 	exit(1);
 }
 
 static void	child_proccess(int fd[2], char **argv, char **env)
 {
-	int	fd_file;
+	int		fd_file;
+	char	*path;
 
-	printf("Child\n");
 	close(fd[PIPE_READ]);
 	fd_file = open(argv[F_INPUT], O_RDWR);
 	if (fd_file == -1)
 		end_error_file(argv[F_INPUT]);
+	
 	dup2(fd_file, STDIN);
 	close(fd_file);
 	dup2(fd[PIPE_WRITE], STDOUT);
 	close(fd[PIPE_WRITE]);
 	
+	path = get_path(argv[CMD_1], env);
 }
 
 int	main(int argc, char **argv, char **envp)
