@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 09:53:03 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/04/19 09:48:33 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/04/19 09:52:37 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ static void	child_proccess(int fd[2], char **argv, char **env)
 {
 	int	fd_file;
 
+	printf("Child\n");
 	close(fd[PIPE_READ]);
 	fd_file = open(argv[F_INPUT], O_RDWR);
 	if (fd_file == -1)
@@ -47,7 +48,7 @@ int	main(int argc, char **argv, char **envp)
 	if (pid == -1)
 		perror(ERROR_FORK);
 	else if (pid == 0)
-		printf("Child\n");
+		child_proccess(fds, argv, envp);
 	else
 		printf("Parent with pid %d\n", pid);
 	// waitpid(pid, NULL, 0);

@@ -1,21 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tools.h                                            :+:      :+:    :+:   */
+/*   get_path_array.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/06 10:47:56 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/04/19 10:25:50 by jre-gonz         ###   ########.fr       */
+/*   Created: 2022/04/19 10:20:32 by jre-gonz          #+#    #+#             */
+/*   Updated: 2022/04/19 10:23:28 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TOOLS_H
-# define TOOLS_H
+#include "../include/pipex.h"
 
-# include "pipex.h"
+char	**get_path_array(char **envp)
+{
+	int	i;
 
-void	end(int endtype, char *msg);
-char	**get_path_array(char **envp);
-
-#endif
+	i = 0;
+	while (envp[i])
+	{
+		if (!ft_strncmp(envp[i], "PATH=", 5))
+			return (ft_split(ft_strchr(envp[i], '/'), ':'));
+		i++;
+	}
+	return (NULL);
+}

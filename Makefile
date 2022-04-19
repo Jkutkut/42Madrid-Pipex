@@ -21,7 +21,8 @@ NAME		=	pipex
 LIBFT		=	src/libft/libft.a
 LIBFT_DIR	=	$(dir $(LIBFT))
 
-TOOLS		=	end.c
+TOOLS		=	end.c \
+				get_path_array.c
 
 SRCS		=	$(NAME).c \
 				${TOOLS:%=tools/%}
