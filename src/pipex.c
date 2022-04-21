@@ -6,18 +6,11 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 09:53:03 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/04/21 10:44:49 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/04/21 12:18:32 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
-
-static void	end_error_file(char *file)
-{
-	perror("No such file or directory: ");
-	perror(file);
-	exit(1);
-}
 
 static void	child_proccess(int fd[2], char **argv, char **envp)
 {
@@ -71,29 +64,22 @@ static void	parent_proccess(int fd[2], char **argv, char **envp)
 
 int	main(int argc, char **argv, char **envp)
 {
-	pipex_t		pipex;
+	pipex_t		*pipex;
 
 	if (argc != 5)
 		end(1, ERROR_ARGC);
-	if (pipe(pipex.fds) == -1)
-		end(1, ERROR_PIPE);
-	pipex.f_input = open(argv[F_INPUT], O_RDONLY);
-	if (pipex.f_input == -1)
-		end_error_file(argv[F_INPUT]);
-	pipex.f_output = open(argv[F_OUTPUT], O_TRUNC | O_CREAT | O_RDWR, 0000644);
-	if (pipex.f_output == -1)
-		end_error_file(argv[F_OUTPUT]);
-	pipex.pid = fork();
-	if (pipex.pid == -1)
+	pipex = init_pipex(argc, argv, envp);
+	pipex->pid = fork();
+	if (pipex->pid == -1)
 		perror(ERROR_FORK);
-	if (pipex.pid == 0)
-		child_proccess(&pipex.fds, argv, envp);
+	if (pipex->pid == 0)
+		child_proccess(&pipex->fds, argv, envp);
 		// child_proccess(pipex);
 	else
-		parent_proccess(&pipex.fds, argv, envp);
+		parent_proccess(&pipex->fds, argv, envp);
 		// parent_proccess(pipex);
 	
-	waitpid(pipex.pid, NULL, 0);
+	waitpid(pipex->pid, NULL, 0);
 	return (0);
 }
 

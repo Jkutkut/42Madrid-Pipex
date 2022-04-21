@@ -11,7 +11,7 @@ TITLE		=	\033[38;5;33m
 # Compile variables
 LIB_CC		=	ar rcT
 CC			=	gcc
-FLAGS		=	-Wall -Wextra #-fsanitize=address #-Werror
+FLAGS		=	-Wall -Wextra #-Werror
 HEADERS		=	-I ./include -I ./src/libft
 COMPILE		=	$(CC) $(FLAGS) $(HEADERS)
 
@@ -22,9 +22,11 @@ NAME		=	pipex
 LIBFT		=	src/libft/libft.a
 LIBFT_DIR	=	$(dir $(LIBFT))
 
-TOOLS		=	end.c \
+TOOLS		=	end_error_file.c \
+				end.c \
 				get_path_array.c \
-				get_path.c
+				get_path.c \
+				init_pipex.c
 
 SRCS		=	$(NAME).c \
 				${TOOLS:%=tools/%}
@@ -39,6 +41,16 @@ OBJS		=	${SRCS:%.c=bin/%.o}
 
 # Makefile logic
 all: $(NAME)
+
+# DEBUG
+ifeq ($(UNAME_S),Linux)
+debug: FLAGS += -pedantic -fsanitize=address -fsanitize=leak -fsanitize=undefined -fsanitize=bounds -fsanitize=null -g3
+endif
+ifeq ($(UNAME_S),Darwin)
+debug: FLAGS += -pedantic -fsanitize=address -g3
+endif
+debug: $(NAME)
+
 re: fclean all
 
 $(NAME):	$(LIBFT) $(OBJS)

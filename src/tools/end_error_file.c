@@ -1,24 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tools.h                                            :+:      :+:    :+:   */
+/*   end_error_file.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/06 10:47:56 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/04/21 12:20:06 by jre-gonz         ###   ########.fr       */
+/*   Created: 2022/04/21 12:18:37 by jre-gonz          #+#    #+#             */
+/*   Updated: 2022/04/21 12:20:16 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TOOLS_H
-# define TOOLS_H
+#include "tools.h"
 
-# include "pipex.h"
-
-void	end_error_file(char *file);
-void	end(int endtype, char *msg);
-char	**get_path_array(char **envp);
-char	*get_path(char *cmd_full, char **envp);
-pipex_t	*init_pipex(int argc, char **argv, char **envp);
-
-#endif
+void	end_error_file(char *file)
+{
+	perror("No such file or directory: ");
+	perror(file);
+	exit(1);
+}
