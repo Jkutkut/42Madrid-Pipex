@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 09:53:03 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/04/19 15:56:55 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/04/21 08:24:11 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ static void	child_proccess(int fd[2], char **argv, char **envp)
 	
 	dup2(fd_file, STDIN);
 	close(fd_file);
-	// dup2(fd[PIPE_WRITE], STDOUT);
-	// close(fd[PIPE_WRITE]);
+	dup2(fd[PIPE_WRITE], STDOUT);
+	close(fd[PIPE_WRITE]);
 	
 	cmd = ft_split(argv[CMD_1], ' ');
 	if (!cmd)
@@ -52,7 +52,21 @@ static void	child_proccess(int fd[2], char **argv, char **envp)
 	if (execve(path, cmd, envp) == -1)
 	{
 		ft_putstr_fd("pipex: command not found: ", STDERROR);
+		//TODO
+		exit(0);
 	}
+}
+
+
+static void	parent_proccess(int fd[2], char **argv, char **envp)
+{
+	dup2(fd[PIPE_READ], STDIN);
+	close(fd[PIPE_READ]);
+	
+	
+	char str[3000];
+	read(STDIN, str, 3000);
+	printf("%s\n", str);
 }
 
 int	main(int argc, char **argv, char **envp)
@@ -70,7 +84,10 @@ int	main(int argc, char **argv, char **envp)
 	else if (pid == 0)
 		child_proccess(fds, argv, envp);
 	else
+	{
 		printf("Parent with pid %d\n", pid);
-	// waitpid(pid, NULL, 0);
+		parent_proccess(fds, argv, envp);
+	}
+	waitpid(pid, NULL, 0);
 	return (0);
 }
