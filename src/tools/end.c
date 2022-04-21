@@ -6,11 +6,11 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 10:44:21 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/04/19 12:20:55 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/04/21 09:18:13 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/tools.h"
+#include "tools.h"
 
 /**
  * @brief Ends the execution of the program

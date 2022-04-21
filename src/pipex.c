@@ -6,11 +6,11 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 09:53:03 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/04/21 08:24:11 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/04/21 09:20:56 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/pipex.h"
+#include "pipex.h"
 
 static void	end_error_file(char *file)
 {

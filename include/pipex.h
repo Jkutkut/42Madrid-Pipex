@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 09:57:44 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/04/19 10:43:32 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/04/21 09:25:22 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@
 # include <errno.h>
 # include <sys/stat.h>
 
-# include "../include/pipex_msg.h"
+# include "pipex_msg.h"
 
-# include "../src/libft/libft.h"
+# include "libft.h"
 
 # include "tools.h"
 

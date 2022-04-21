@@ -6,11 +6,11 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 10:48:50 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/04/19 16:03:40 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/04/21 09:18:27 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/tools.h"
+#include "tools.h"
 
 static void	free_string_arr(char **arr)
 {

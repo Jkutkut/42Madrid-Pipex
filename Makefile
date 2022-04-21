@@ -12,7 +12,8 @@ TITLE		=	\033[38;5;33m
 LIB_CC		=	ar rcT
 CC			=	gcc
 FLAGS		=	-Wall -Wextra #-fsanitize=address #-Werror
-COMPILE		=	$(CC) $(FLAGS)
+HEADERS		=	-I ./include -I ./src/libft
+COMPILE		=	$(CC) $(FLAGS) $(HEADERS)
 
 # Code variables
 
