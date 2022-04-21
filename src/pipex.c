@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 09:53:03 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/04/21 09:20:56 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/04/21 10:44:49 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static void	end_error_file(char *file)
 {
-	ft_putstr_fd("No such file or directory: ", STDERROR);
-	ft_putendl_fd(file, STDERROR);
+	perror("No such file or directory: ");
+	perror(file);
 	exit(1);
 }
 
@@ -71,23 +71,51 @@ static void	parent_proccess(int fd[2], char **argv, char **envp)
 
 int	main(int argc, char **argv, char **envp)
 {
-	int	pid;
-	int	fds[2];
+	pipex_t		pipex;
 
 	if (argc != 5)
 		end(1, ERROR_ARGC);
-	if (pipe(fds) == -1)
+	if (pipe(pipex.fds) == -1)
 		end(1, ERROR_PIPE);
-	pid = fork();
-	if (pid == -1)
+	pipex.f_input = open(argv[F_INPUT], O_RDONLY);
+	if (pipex.f_input == -1)
+		end_error_file(argv[F_INPUT]);
+	pipex.f_output = open(argv[F_OUTPUT], O_TRUNC | O_CREAT | O_RDWR, 0000644);
+	if (pipex.f_output == -1)
+		end_error_file(argv[F_OUTPUT]);
+	pipex.pid = fork();
+	if (pipex.pid == -1)
 		perror(ERROR_FORK);
-	else if (pid == 0)
-		child_proccess(fds, argv, envp);
+	if (pipex.pid == 0)
+		child_proccess(&pipex.fds, argv, envp);
+		// child_proccess(pipex);
 	else
-	{
-		printf("Parent with pid %d\n", pid);
-		parent_proccess(fds, argv, envp);
-	}
-	waitpid(pid, NULL, 0);
+		parent_proccess(&pipex.fds, argv, envp);
+		// parent_proccess(pipex);
+	
+	waitpid(pipex.pid, NULL, 0);
 	return (0);
 }
+
+// int	main(int argc, char **argv, char **envp)
+// {
+// 	int	pid;
+// 	int	fds[2];
+
+// 	if (argc != 5)
+// 		end(1, ERROR_ARGC);
+// 	if (pipe(fds) == -1)
+// 		end(1, ERROR_PIPE);
+// 	pid = fork();
+// 	if (pid == -1)
+// 		perror(ERROR_FORK);
+// 	else if (pid == 0)
+// 		child_proccess(fds, argv, envp);
+// 	else
+// 	{
+// 		printf("Parent with pid %d\n", pid);
+// 		parent_proccess(fds, argv, envp);
+// 	}
+// 	waitpid(pid, NULL, 0);
+// 	return (0);
+// }
