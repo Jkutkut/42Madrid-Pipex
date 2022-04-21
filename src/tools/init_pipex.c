@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 10:47:55 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/04/21 12:18:02 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/04/21 16:38:25 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,14 @@ pipex_t	*init_pipex(int argc, char **argv, char **envp)
 	if (!pipex)
 		end(1, ERROR_MALLOC);
 	
-	if (pipe(pipex->fds) == -1)
-		end(1, ERROR_PIPE);
 	pipex->f_input = open(argv[F_INPUT], O_RDONLY);
 	if (pipex->f_input == -1)
 		end_error_file(argv[F_INPUT]);
 	pipex->f_output = open(argv[F_OUTPUT], O_TRUNC | O_CREAT | O_RDWR, 0000644);
 	if (pipex->f_output == -1)
 		end_error_file(argv[F_OUTPUT]);
+	if (pipe(pipex->fds) == -1)
+		end(1, ERROR_PIPE);
+	pipex->env_paths = get_path_array(envp);
 	return (pipex);
 }
