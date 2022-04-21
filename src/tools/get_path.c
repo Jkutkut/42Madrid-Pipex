@@ -6,36 +6,24 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 10:48:50 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/04/21 09:18:27 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/04/21 15:26:41 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "tools.h"
 
-static void	free_string_arr(char **arr)
+static char	*free_string_arr(char **arr, char *v)
 {
 	int	i;
 
 	if (!arr)
-		return ;
+		return v;
 	i = 0;
 	while (arr[i])
 		free(arr[i++]);
 	free(arr);
+	return (v);
 }
-
-// static char	*get_cmd(char *cmd_full)
-// {
-// 	char	**cmd_array;
-// 	char	*cmd;
-
-// 	cmd_array = ft_split(cmd_full, ' ');
-// 	if (!cmd_array)
-// 		return (NULL);
-// 	cmd = ft_strdup(cmd_array[0]);
-// 	free_string_arr(cmd_array);
-// 	return (cmd);
-// }
 
 static char	*make_path(char *path, char *cmd)
 {
@@ -56,14 +44,6 @@ static char	*make_path(char *path, char *cmd)
 	return (str);
 }
 
-static char	*end_get_path(char *cmd, char **path_array, char *v)
-{
-	// if (cmd)
-	// 	free(cmd);
-	free_string_arr(path_array);
-	return (v);
-}
-
 char	*get_path(char *cmd, char **envp)
 {
 	char	**path_array;
@@ -73,21 +53,21 @@ char	*get_path(char *cmd, char **envp)
 
 	path_array = get_path_array(envp);
 	if (!path_array || !cmd)
-		return (end_get_path(cmd, path_array, NULL));
+		return (free_string_arr(path_array, NULL));
 	i = 0;
 	while (path_array[i])
 	{
 		path = make_path(path_array[i], cmd);
 		if (!path)
-			return (end_get_path(cmd, path_array, NULL));
+			return (free_string_arr(path_array, NULL));
 		fd = open(path, O_RDONLY);
 		if (fd >= 0)
 		{
 			close(fd);
-			return end_get_path(cmd, path_array, path);
+			return free_string_arr(path_array, path);
 		}
 		free(path);
 		i++;
 	}
-	return end_get_path(cmd, path_array, NULL);
+	return free_string_arr(path_array, NULL);
 }

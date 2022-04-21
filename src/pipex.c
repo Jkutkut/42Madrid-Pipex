@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 09:53:03 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/04/21 12:18:32 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/04/21 16:33:49 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,35 +73,12 @@ int	main(int argc, char **argv, char **envp)
 	if (pipex->pid == -1)
 		perror(ERROR_FORK);
 	if (pipex->pid == 0)
-		child_proccess(&pipex->fds, argv, envp);
+		child_proccess(pipex->fds, argv, envp);
 		// child_proccess(pipex);
 	else
-		parent_proccess(&pipex->fds, argv, envp);
+		parent_proccess(pipex->fds, argv, envp);
 		// parent_proccess(pipex);
 	
 	waitpid(pipex->pid, NULL, 0);
 	return (0);
 }
-
-// int	main(int argc, char **argv, char **envp)
-// {
-// 	int	pid;
-// 	int	fds[2];
-
-// 	if (argc != 5)
-// 		end(1, ERROR_ARGC);
-// 	if (pipe(fds) == -1)
-// 		end(1, ERROR_PIPE);
-// 	pid = fork();
-// 	if (pid == -1)
-// 		perror(ERROR_FORK);
-// 	else if (pid == 0)
-// 		child_proccess(fds, argv, envp);
-// 	else
-// 	{
-// 		printf("Parent with pid %d\n", pid);
-// 		parent_proccess(fds, argv, envp);
-// 	}
-// 	waitpid(pid, NULL, 0);
-// 	return (0);
-// }
