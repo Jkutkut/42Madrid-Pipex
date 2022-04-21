@@ -1,22 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex_msg.h                                        :+:      :+:    :+:   */
+/*   init_pipex.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/06 10:05:54 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/04/21 12:09:44 by jre-gonz         ###   ########.fr       */
+/*   Created: 2022/04/21 10:47:55 by jre-gonz          #+#    #+#             */
+/*   Updated: 2022/04/21 12:10:18 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_MSG_H
-# define PIPEX_MSG_H
+#include "pipex.h"
 
-# define ERROR_ARGC "Invalid arguments:\n./pipex <input> <cmd1> <cm2> <output>\n"
+pipex_t	*init_pipex(char *cmd_full, char **envp)
+{
+	pipex_t	*pipex;
 
-# define ERROR_FORK "Error when creating the fork.\n"
-# define ERROR_PIPE "Error when creating the pipe.\n"
-# define ERROR_MALLOC "Malloc failed.\n"
-
-#endif
+	pipex = (pipex_t *)malloc(sizeof(pipex_t));
+	if (!pipex)
+		end(1, ERROR_MALLOC);
+	
+	return (pipex);
+}
