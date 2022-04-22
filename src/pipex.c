@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 09:53:03 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/04/22 08:11:26 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/04/22 08:25:38 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,24 +25,22 @@ static void	child_proccess(pipex_t *pipex)
 	dup2(fd_file, STDIN);
 	close(fd_file);
 	dup2(pipex->fds[PIPE_WRITE], STDOUT);
-	// close(pipex->fds[PIPE_WRITE]);
-	
-	printf("hey");
-	// pipex->cmd_args = ft_split(pipex->cmds[CMD_1], ' ');
-	// if (!pipex->cmd_args)
-	// 	return ; // TODO
-	// path = get_path(pipex->cmd[0], pipex->env_paths);
-	// if (!path)
-	// 	return ; // TODO
-	// printf("%s\n", path);
-	// if (execve(path, pipex->cmd_args, pipex->env_paths) == -1)
-	// {
-	// 	ft_putstr_fd("pipex: command not found: ", STDERROR);
-	// 	free(path);
-	// 	//TODO
-	// 	exit(0);
-	// }
-	// free(path);
+	// close(pipex->fds[PIPE_WRITE]); // TODO ?
+
+	pipex->cmd_args = ft_split(pipex->cmds[CMD_1], ' ');
+	if (!pipex->cmd_args)
+		return ; // TODO
+	path = get_path(pipex->cmd_args[0], pipex->env_paths);
+	if (!path)
+		return ; // TODO
+	if (execve(path, pipex->cmd_args, pipex->env_paths) == -1)
+	{
+		perror("pipex: command not found: ");
+		free(path);
+		//TODO
+		exit(0);
+	}
+	free(path);
 }
 
 

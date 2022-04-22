@@ -1,9 +1,9 @@
 #!/bin/sh
 
-inputFile="tests/files/makefile.txt"
+inputFile="Makefile"
 outputFile="result.txt"
 
-./pipex $inputFile cat "wc -l" $outputFile &&
+./pipex $inputFile "cat -e" "wc -l" $outputFile &&
 
 {
 	echo "It worked!"

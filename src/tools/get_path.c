@@ -6,24 +6,11 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 10:48:50 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/04/22 08:10:49 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/04/22 08:21:36 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "tools.h"
-
-static char	*free_string_arr(char **arr, char *v)
-{
-	int	i;
-
-	if (!arr)
-		return v;
-	i = 0;
-	while (arr[i])
-		free(arr[i++]);
-	free(arr);
-	return (v);
-}
 
 static char	*make_path(char *path, char *cmd)
 {
@@ -57,15 +44,15 @@ char	*get_path(char *cmd, char **path_array)
 	{
 		path = make_path(path_array[i], cmd);
 		if (!path)
-			return (free_string_arr(path_array, NULL));
+			return (NULL);
 		fd = open(path, O_RDONLY);
 		if (fd >= 0)
 		{
 			close(fd);
-			return free_string_arr(path_array, path);
+			return (path);
 		}
 		free(path);
 		i++;
 	}
-	return free_string_arr(path_array, NULL);
+	return (NULL);
 }
