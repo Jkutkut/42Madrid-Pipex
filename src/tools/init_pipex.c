@@ -6,19 +6,19 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 10:47:55 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/04/21 20:57:36 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/04/22 10:06:54 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "tools.h"
 
-pipex_t	*init_pipex(int argc, char **argv, char **envp)
+void	init_pipex(pipex_t *pipex, int argc, char **argv, char **envp)
 {
-	pipex_t	*pipex;
-
-	pipex = (pipex_t *)malloc(sizeof(pipex_t));
-	if (!pipex)
-		end(1, ERROR_MALLOC);
+	pipex->here_doc = 0;
+	pipex->cmd_count = argc - 3 - pipex->here_doc;
+	pipex->fds = malloc(sizeof(int) * (pipex->cmd_count - 1) * 2);
+	if (!pipex->fds)
+		end(1, ERROR_MALLOC); // TODO
 	pipex->cmds = argv;
 	pipex->f_input = open(argv[F_INPUT], O_RDONLY);
 	if (pipex->f_input == -1)
@@ -29,5 +29,4 @@ pipex_t	*init_pipex(int argc, char **argv, char **envp)
 	if (pipe(pipex->fds) == -1)
 		end(1, ERROR_PIPE);
 	pipex->env_paths = get_path_array(envp);
-	return (pipex);
 }

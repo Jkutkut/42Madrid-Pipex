@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 09:53:03 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/04/22 08:25:38 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/04/22 08:36:21 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,18 +57,18 @@ static void	parent_proccess(int fd[2], char **argv, char **envp)
 
 int	main(int argc, char **argv, char **envp)
 {
-	pipex_t		*pipex;
+	pipex_t	pipex;
 
 	if (argc != 5)
 		end(1, ERROR_ARGC);
-	pipex = init_pipex(argc, argv, envp);
-	pipex->pid = fork();
-	if (pipex->pid == -1)
+	init_pipex(&pipex, argc, argv, envp);
+	pipex.pid = fork();
+	if (pipex.pid == -1)
 		perror(ERROR_FORK);
-	if (pipex->pid == 0)
-		child_proccess(pipex);
+	if (pipex.pid == 0)
+		child_proccess(&pipex);
 	else
-		parent_proccess(pipex->fds, argv, envp);
+		parent_proccess(pipex.fds, argv, envp);
 		// parent_proccess(pipex);
 	
 	// waitpid(pipex->pid, NULL, 0);
