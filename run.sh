@@ -1,6 +1,6 @@
 #!/bin/sh
 
-inputFile="tests/files/empty.txt"
+inputFile="tests/files/makefile.txt"
 outputFile="result.txt"
 
 ./pipex $inputFile cat "wc -l" $outputFile &&

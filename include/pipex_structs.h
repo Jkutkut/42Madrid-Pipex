@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 09:33:44 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/04/21 16:37:14 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/04/21 20:57:16 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,9 @@
 
 typedef struct	pipex_s
 {
-	// char	*f_input;
-	// char	*f_output;
 	int		f_input;
 	int		f_output;
+	char	**cmds;
 	char	**env_paths;
 	int		fds[2];
 	char	*cmd;

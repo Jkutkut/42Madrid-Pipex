@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 10:47:55 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/04/21 16:38:25 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/04/21 20:57:36 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ pipex_t	*init_pipex(int argc, char **argv, char **envp)
 	pipex = (pipex_t *)malloc(sizeof(pipex_t));
 	if (!pipex)
 		end(1, ERROR_MALLOC);
-	
+	pipex->cmds = argv;
 	pipex->f_input = open(argv[F_INPUT], O_RDONLY);
 	if (pipex->f_input == -1)
 		end_error_file(argv[F_INPUT]);
