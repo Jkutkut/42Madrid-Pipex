@@ -12,20 +12,15 @@ echo "----------------";
 {
 	echo "----------------";
 	echo "It worked!"
-	if [ -f $outputFile ]; then
-		echo "Output file exists!"
-		rm $outputFile
-	else
-		echo "Output file does not exist!"
-	fi
 } ||
 {
 	echo "----------------";
 	echo "It failed!"
-	if [ -f $outputFile ]; then
-		echo "Output file exists!"
-		rm $outputFile
-	else
-		echo "Output file does not exist!"
-	fi
 }
+
+if [ -f $outputFile ]; then
+	echo "Output file exists!"
+	# rm $outputFile
+else
+	echo "Output file does not exist!"
+fi
