@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 09:53:03 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/04/23 21:59:12 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/04/23 23:33:13 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,17 +38,16 @@ static void	exe_cmd(t_pipex *p)
 	close_pipes(p);
 	p->cmd_args = ft_split(p->cmds[p->cmd_idx], ' ');
 	if (!p->cmd_args)
-		end(1, ERROR_MALLOC); // TODO
+		free_end(p, 1, ERROR_MALLOC);
 	p->cmd_full = get_path(p->cmd_args[0], p->env_paths);
 	if (!p->cmd_full)
-		end(1, ""); // TODO
+		free_end(p, 1, ERROR_CNF);
 
 	ft_putendl_fd(p->cmd_full, STDERROR);
 	if (execve(p->cmd_full, p->cmd_args, p->env_paths) == -1)
-		end(1, "ERROR"); // TODO
+		free_end(p, 1, ERROR_EXE_CMD);
 	
-	// TODO FREE
-	exit(0);
+	free_end(p, 0, NULL);
 }
 
 int	main(int argc, char **argv, char **envp)
@@ -60,8 +59,8 @@ int	main(int argc, char **argv, char **envp)
 	init_pipex(&pipex, argc, argv, envp);
 	while (++pipex.cmd_idx < pipex.cmd_count)
 		exe_cmd(&pipex);
-	// TODO close pipes
-	// waitpid(-1, NULL, 0);
-	// TODO free
+	close_pipes(&pipex);
+	waitpid(-1, NULL, 0);
+	free_end(&pipex, 0, NULL);
 	return (0);
 }

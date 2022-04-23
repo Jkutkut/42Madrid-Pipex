@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 10:05:54 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/04/23 23:23:00 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/04/23 23:32:38 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,7 @@
 
 # define ERROR_ENV "Error when getting the environment variable.\n"
 # define ERROR_PIPE_INIT "Error when initializing pipes.\n"
+# define ERROR_CNF "Command not found.\n"
+# define ERROR_EXE_CMD "Error when executing the command.\n"
 
 #endif
