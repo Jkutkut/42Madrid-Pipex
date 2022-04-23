@@ -64,8 +64,11 @@ bin/%.o: src/%.c
 	@$(COMPILE) -c $< -o $@ $(DEBUG)
 	@echo "${GREEN} [OK]${NC}"
 
-$(LIBFT):
+$(LIBFT): $(LIBFT)/Makefile
 	make -C $(LIBFT_DIR) BIN="../../bin/libft"
+
+$(LIBFT)/Makefile:
+	git submodule update --init --recursive
 
 bonus: $(BONUS_NAME)
 
