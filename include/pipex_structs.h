@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 09:33:44 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/04/22 10:09:18 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/04/23 13:32:31 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ typedef struct	pipex_s
 	char	**cmds;
 	char	**env_paths;
 	int  	cmd_count;
+	int		fd_idx;
 	int		*fds;
-	// int		pipes;
 	char	*cmd;
 	char	**cmd_args;
 	pid_t	pid;
