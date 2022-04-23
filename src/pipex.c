@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 09:53:03 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/04/23 18:11:29 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/04/23 19:02:13 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,14 @@ static void	exe_cmd(t_pipex *p)
 		use_pipe(p->f_input, p->fds[1]);
 	else if (p->cmd_idx == p->cmd_count - 1)
 	{
-		// use_pipe(p->fds[p->cmd_idx * 2 - 2], p->f_output);
+		use_pipe(p->fds[p->cmd_idx * 2 - 2], p->f_output);
 		ft_putendl_fd("last fd", 2);
 		ft_putstr_fd("  p->fds[", 2);
 		ft_putnbr_fd(p->cmd_idx * 2 - 2, 2);
 		ft_putstr_fd("]\n\n", 2);
 
-		dup2(p->fds[p->cmd_idx * 2 - 2], STDIN);
-		close(p->fds[p->cmd_idx * 2 - 2]);
+		// dup2(p->fds[p->cmd_idx * 2 - 2], STDIN);
+		// close(p->fds[p->cmd_idx * 2 - 2]);
 		
 		
 		// char str[3000];
@@ -56,50 +56,6 @@ static void	exe_cmd(t_pipex *p)
 		end(1, "ERROR"); // TODO
 	// TODO FREE
 }
-
-
-// static void	child_proccess(t_pipex *pipex)
-// {
-// 	int		fd_file;
-// 	char	*path;
-
-// 	close(pipex->fds[PIPE_READ]);
-// 	fd_file = open(pipex->cmds[F_INPUT], O_RDWR);
-// 	if (fd_file == -1)
-// 		end_error_file(pipex->cmds[F_INPUT]);
-	
-// 	dup2(fd_file, STDIN);
-// 	close(fd_file);
-// 	dup2(pipex->fds[PIPE_WRITE], STDOUT);
-// 	// close(pipex->fds[PIPE_WRITE]); // TODO ?
-
-// 	pipex->cmd_args = ft_split(pipex->cmds[CMD_1], ' ');
-// 	if (!pipex->cmd_args)
-// 		return ; // TODO
-// 	path = get_path(pipex->cmd_args[0], pipex->env_paths);
-// 	if (!path)
-// 		return ; // TODO
-// 	if (execve(path, pipex->cmd_args, pipex->env_paths) == -1)
-// 	{
-// 		perror("pipex: command not found: ");
-// 		free(path);
-// 		//TODO
-// 		exit(0);
-// 	}
-// 	free(path);
-// }
-
-
-// static void	parent_proccess(int fd[2], char **argv, char **envp)
-// {
-// 	dup2(fd[PIPE_READ], STDIN);
-// 	close(fd[PIPE_READ]);
-	
-	
-// 	char str[3000];
-// 	read(STDIN, str, 3000);
-// 	printf("%s\n", str);
-// }
 
 int	main(int argc, char **argv, char **envp)
 {
