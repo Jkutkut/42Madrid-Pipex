@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 22:15:32 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/04/23 23:22:00 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/04/23 23:54:33 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ static void	free_array(void **array)
 	if (!array)
 		return ;
 	i = 0;
-	while (array + i)
-		free(array + i++);
+	while (*(array + i))
+		free(*(array + i++));
 	free(array);
 }
 
@@ -33,6 +33,6 @@ void	free_end(t_pipex *p, int endtype, char *msg)
 	if (p->env_paths)
 		free_array(p->env_paths);
 	if (p->fds)
-		free_array(p->fds);
+		free(p->fds);
 	end(endtype, msg);
 }
