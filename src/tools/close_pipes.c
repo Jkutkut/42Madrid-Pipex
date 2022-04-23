@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 19:11:37 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/04/23 23:29:02 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/04/23 23:59:20 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ void	close_pipes(t_pipex *p)
 	i = 0;
 	while (i < p->cmd_count - 1)
 	{
-		close_pipe(p->fds[2 * i]);
-		close_pipe(p->fds[2 * i + 1]);
+		close_pipe(&p->fds[2 * i]);
+		close_pipe(&p->fds[2 * i + 1]);
 		i++;
 	}
 }
