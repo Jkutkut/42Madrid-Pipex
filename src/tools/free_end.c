@@ -1,20 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   end_error_file.c                                   :+:      :+:    :+:   */
+/*   free_end.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/21 12:18:37 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/04/23 23:02:30 by jre-gonz         ###   ########.fr       */
+/*   Created: 2022/04/23 22:15:32 by jre-gonz          #+#    #+#             */
+/*   Updated: 2022/04/23 23:10:56 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "tools.h"
 
-void	end_error_file(t_pipex *pipex, char *file)
+static void	free_array(char **array)
 {
-	perror("No such file or directory: ");
-	perror(file);
-	free_end(pipex, 1, "\n");
+	int	i;
+
+	if (!array)
+		return ;
+	i = 0;
+	while (array[i])
+		free(array[i++]);
+	free(array);
+}
+
+void	free_end(t_pipex *p, int endtype, char *msg)
+{
+	if (p->f_input != -1)
+		close(p->f_input);
+	if (p->f_output != -1)
+		close(p->f_output);
+	if (p->env_paths)
+		free_array(p->env_paths);
+	end(endtype, msg);
 }

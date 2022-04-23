@@ -25,6 +25,7 @@ LIBFT_DIR	=	$(dir $(LIBFT))
 TOOLS		=	close_pipes.c \
 				end_error_file.c \
 				end.c \
+				free_end.c \
 				get_path_array.c \
 				get_path.c \
 				init_pipex.c \
