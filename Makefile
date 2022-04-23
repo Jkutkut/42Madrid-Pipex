@@ -64,7 +64,7 @@ bin/%.o: src/%.c
 	@$(COMPILE) -c $< -o $@ $(DEBUG)
 	@echo "${GREEN} [OK]${NC}"
 
-$(LIBFT): $(LIBFT)/Makefile
+$(LIBFT):
 	make -C $(LIBFT_DIR) BIN="../../bin/libft"
 
 $(LIBFT)/Makefile:
