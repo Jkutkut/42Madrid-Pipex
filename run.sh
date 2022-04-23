@@ -7,7 +7,7 @@ make
 
 echo "----------------";
 
-./pipex $inputFile "cat -e" "wc -l" $outputFile &&
+./pipex $inputFile "cat -e" "grep COMPI" $outputFile &&
 
 {
 	echo "----------------";

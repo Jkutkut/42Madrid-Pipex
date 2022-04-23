@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 09:53:03 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/04/23 19:02:13 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/04/23 21:12:44 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ static void	exe_cmd(t_pipex *p)
 		ft_putstr_fd("\n", 2);
 	}
 	
+	close_pipes(p);
 	p->cmd_args = ft_split(p->cmds[p->cmd_idx], ' ');
 	if (!p->cmd_args)
 		end(1, ERROR_MALLOC); // TODO
@@ -54,6 +55,7 @@ static void	exe_cmd(t_pipex *p)
 	ft_putendl_fd(p->cmd_full, STDERROR);
 	if (execve(p->cmd_full, p->cmd_args, p->env_paths) == -1)
 		end(1, "ERROR"); // TODO
+	
 	// TODO FREE
 }
 
