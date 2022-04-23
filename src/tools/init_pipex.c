@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 10:47:55 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/04/23 17:42:12 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/04/23 22:09:27 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,10 @@ void	init_pipex(t_pipex *pipex, int argc, char **argv, char **envp)
 	pipex->env_paths = get_path_array(envp);
 
 	// TODO handle here_doc
-	pipex->f_input = open(argv[F_INPUT], O_RDONLY);
+	pipex->f_input = open(*(argv - pipex->here_doc), O_RDONLY);
 	if (pipex->f_input == -1)
-		end_error_file(argv[F_INPUT]); // TODO
-	pipex->f_output = open(argv[F_OUTPUT], O_TRUNC | O_CREAT | O_RDWR, 0000644);
+		end_error_file(""); // TODO
+	pipex->f_output = open(argv[argc - 1], O_TRUNC | O_CREAT | O_RDWR, 0000644);
 	if (pipex->f_output == -1)
 		end_error_file(argv[F_OUTPUT]); // TODO
 
