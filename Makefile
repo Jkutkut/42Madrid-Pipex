@@ -22,7 +22,8 @@ NAME		=	pipex
 LIBFT		=	src/libft/libft.a
 LIBFT_DIR	=	$(dir $(LIBFT))
 
-TOOLS		=	end_error_file.c \
+TOOLS		=	close_pipes.c \
+				end_error_file.c \
 				end.c \
 				get_path_array.c \
 				get_path.c \
