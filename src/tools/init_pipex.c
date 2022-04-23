@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 10:47:55 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/04/23 23:11:26 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/04/23 23:25:25 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	init_pipes(t_pipex *pipex)
 	while (i < pipex->cmd_count - 1)
 	{
 		if (pipe(&(pipex->fds[2 * i])) != 0)
-			return ; // TODO
+			free_end(pipex, 1, ERROR_PIPE_INIT);
 		i++;
 	}
 	pipex->cmd_idx = -1;
@@ -37,9 +37,6 @@ void	init_pipex(t_pipex *pipex, int argc, char **argv, char **envp)
 	}
 
 	pipex->cmd_count = argc - 3 - pipex->here_doc;
-	// ft_putstr_fd("cmd_count: ", 2);
-	// ft_putnbr_fd(pipex->cmd_count, 2);
-	// ft_putchar_fd('\n', 2);
 	pipex->fds = malloc(sizeof(int) * (pipex->cmd_count - 1) * 2);
 	if (!pipex->fds)
 		end(1, ERROR_MALLOC);
@@ -51,10 +48,10 @@ void	init_pipex(t_pipex *pipex, int argc, char **argv, char **envp)
 	// TODO handle here_doc
 	pipex->f_input = open(*(argv - pipex->here_doc), O_RDONLY);
 	if (pipex->f_input == -1)
-		end_error_file(pipex, *(argv - pipex->here_doc));
+		end_error_file(0, pipex, *(argv - pipex->here_doc));
 	pipex->f_output = open(argv[argc - 1], O_TRUNC | O_CREAT | O_RDWR, 0000644);
 	if (pipex->f_output == -1)
-		end_error_file(pipex, argv[argc - 1]);
+		end_error_file(1, pipex, argv[argc - 1]);
 
 	init_pipes(pipex);
 }

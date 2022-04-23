@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 10:05:54 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/04/23 22:58:28 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/04/23 23:23:00 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,6 @@
 # define ERROR_MALLOC "Malloc failed.\n"
 
 # define ERROR_ENV "Error when getting the environment variable.\n"
+# define ERROR_PIPE_INIT "Error when initializing pipes.\n"
 
 #endif
