@@ -26,7 +26,8 @@ TOOLS		=	end_error_file.c \
 				end.c \
 				get_path_array.c \
 				get_path.c \
-				init_pipex.c
+				init_pipex.c \
+				use_pipe.c
 
 SRCS		=	$(NAME).c \
 				${TOOLS:%=tools/%}
