@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 09:33:44 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/04/23 14:55:16 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/04/23 16:05:32 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,10 @@ typedef struct s_pipex
 	 * Result of spliting the string by spaces.
 	 */
 	char	**cmd_args;
+	/**
+	 * @brief Command with the path.
+	 */
+	char	*cmd_full;
 	/**
 	 * @brief 0 if here_doc is not present, 1 if it is.
 	 */

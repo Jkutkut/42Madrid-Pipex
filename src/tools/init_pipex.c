@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 10:47:55 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/04/23 14:38:56 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/04/23 17:42:12 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,14 @@ void	init_pipex(t_pipex *pipex, int argc, char **argv, char **envp)
 	}
 
 	pipex->cmd_count = argc - 3 - pipex->here_doc;
+	ft_putstr_fd("cmd_count: ", 2);
+	ft_putnbr_fd(pipex->cmd_count, 2);
+	ft_putchar_fd('\n', 2);
 	pipex->fds = malloc(sizeof(int) * (pipex->cmd_count - 1) * 2);
 	if (!pipex->fds)
 		end(1, ERROR_MALLOC); // TODO
 
-	pipex->cmds = argv;
+	pipex->cmds = argv + 2;
 	pipex->env_paths = get_path_array(envp);
 
 	// TODO handle here_doc
