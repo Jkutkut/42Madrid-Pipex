@@ -6,13 +6,13 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 10:47:55 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/04/23 14:02:16 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/04/23 14:38:56 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "tools.h"
 
-static void	init_pipes(pipex_t *pipex)
+static void	init_pipes(t_pipex *pipex)
 {
 	int	i;
 
@@ -23,10 +23,10 @@ static void	init_pipes(pipex_t *pipex)
 			return ; // TODO
 		i++;
 	}
-	pipex->fd_idx = 0;
+	pipex->cmd_idx = -1;
 }
 
-void	init_pipex(pipex_t *pipex, int argc, char **argv, char **envp)
+void	init_pipex(t_pipex *pipex, int argc, char **argv, char **envp)
 {
 	pipex->here_doc = 0;
 	if (!ft_strncmp(argv[1], "here_doc", 8))
@@ -44,6 +44,7 @@ void	init_pipex(pipex_t *pipex, int argc, char **argv, char **envp)
 	pipex->cmds = argv;
 	pipex->env_paths = get_path_array(envp);
 
+	// TODO handle here_doc
 	pipex->f_input = open(argv[F_INPUT], O_RDONLY);
 	if (pipex->f_input == -1)
 		end_error_file(argv[F_INPUT]); // TODO

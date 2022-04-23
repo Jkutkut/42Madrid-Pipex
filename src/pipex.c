@@ -6,25 +6,30 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 09:53:03 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/04/23 13:54:39 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/04/23 14:55:29 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-static void	exe_cmd(pipex_t *pipex)
+static void	exe_cmd(t_pipex *p)
 {
-	pipex->pid = fork();
-	if (pipex->pid)
+	p->pid = fork();
+	if (p->pid)
 		return ;
+	if (p->cmd_idx == 0)
+		use_pipe(p->f_input, p->fds[1]);
+	else if (p->cmd_idx == p->cmd_count - 1)
+		use_pipe(p->fds[p->cmd_idx * 2], p->f_output);
+	else
+		use_pipe(p->fds[p->cmd_idx], p->fds[p->cmd_idx + 1]);
 	
-	use_pipe(pipex->fds[pipex->fd_idx], pipex->fds[pipex->fd_idx + 1]);
-	pipex->fd_idx += 2;
 	
+	// p->cmd = get_path(, p->env_paths);
 }
 
 
-// static void	child_proccess(pipex_t *pipex)
+// static void	child_proccess(t_pipex *pipex)
 // {
 // 	int		fd_file;
 // 	char	*path;
@@ -56,25 +61,25 @@ static void	exe_cmd(pipex_t *pipex)
 // }
 
 
-static void	parent_proccess(int fd[2], char **argv, char **envp)
-{
-	dup2(fd[PIPE_READ], STDIN);
-	close(fd[PIPE_READ]);
+// static void	parent_proccess(int fd[2], char **argv, char **envp)
+// {
+// 	dup2(fd[PIPE_READ], STDIN);
+// 	close(fd[PIPE_READ]);
 	
 	
-	char str[3000];
-	read(STDIN, str, 3000);
-	printf("%s\n", str);
-}
+// 	char str[3000];
+// 	read(STDIN, str, 3000);
+// 	printf("%s\n", str);
+// }
 
 int	main(int argc, char **argv, char **envp)
 {
-	pipex_t	pipex;
+	t_pipex	pipex;
 
 	if (argc != 5)
 		end(1, ERROR_ARGC);
 	init_pipex(&pipex, argc, argv, envp);
-	while (++pipex.fd_idx < pipex.cmd_count)
+	while (++pipex.cmd_idx < pipex.cmd_count)
 		exe_cmd(&pipex);
 	// waitpid(pipex->pid, NULL, 0);
 	return (0);
