@@ -3,9 +3,14 @@
 inputFile="Makefile"
 outputFile="result.txt"
 
+make
+
+echo "----------------";
+
 ./pipex $inputFile "cat -e" "wc -l" $outputFile &&
 
 {
+	echo "----------------";
 	echo "It worked!"
 	if [ -f $outputFile ]; then
 		echo "Output file exists!"
@@ -15,6 +20,7 @@ outputFile="result.txt"
 	fi
 } ||
 {
+	echo "----------------";
 	echo "It failed!"
 	if [ -f $outputFile ]; then
 		echo "Output file exists!"
