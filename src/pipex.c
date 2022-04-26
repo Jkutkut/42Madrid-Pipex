@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 09:53:03 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/04/26 11:02:14 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/04/26 11:16:53 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,16 @@ static void	exe_cmd(t_pipex *p)
 	free_end(p, 0, NULL);
 }
 
-// system("lsof -c pipex");
+static void	check_this(void)
+{
+	system("lsof -c pipex");
+}
 
 int	main(int argc, char **argv, char **envp)
 {
 	t_pipex	pipex;
 
+	atexit(check_this);
 	if (argc < 5)
 		end(1, ERROR_ARGC);
 	init_pipex(&pipex, argc, argv, envp);
