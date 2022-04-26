@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 22:15:32 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/04/23 23:58:05 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/04/26 10:58:53 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,9 @@ void	free_end(t_pipex *p, int endtype, char *msg)
 	if (p->env_paths)
 		free_array(p->env_paths);
 	if (p->fds)
+	{
+		close_pipes(p);
 		free(p->fds);
+	}
 	end(endtype, msg);
 }
