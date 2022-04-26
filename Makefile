@@ -20,7 +20,10 @@ COMPILE		=	$(CC) $(FLAGS) $(HEADERS)
 NAME		=	pipex
 
 LIBFT		=	src/libft/libft.a
-LIBFT_DIR	=	$(dir $(LIBFT))
+# LIBFT_DIR	=	$(dir $(LIBFT))
+
+PRINTF		=	src/ft_printf/libftprintf.a
+# PRINTF_DIR	=	$(dir $(PRINTF))
 
 TOOLS		=	close_pipes.c \
 				end_error_file.c \
@@ -67,22 +70,25 @@ bin/%.o: src/%.c
 	@$(COMPILE) -c $< -o $@ $(DEBUG)
 	@echo "${GREEN} [OK]${NC}"
 
-$(LIBFT):
-	make -C $(LIBFT_DIR) BIN="../../bin/libft"
+%.a:
+	@make $(dir $@)/Makefile
+	make -C $(dir $@) BIN="../../bin/$(dir ${@:src/%=%})"
 
-$(LIBFT)/Makefile:
-	git submodule update --init --recursive
+%/Makefile:
+	@echo "${TITLE}Loading submodule${NC} $(dir ${@:src/%=%})"
+	@git submodule update --init --recursive
+	@echo "${TITLE}Submodule ${YELLOW} $(dir ${@:src/%=%}) loaded ${LGREEN}[OK]${NC}"
 
-bonus: $(BONUS_NAME)
+# bonus: $(BONUS_NAME)
 
-$(BONUS_NAME): $(LIBFT) $(BONUS_OBJS)
-	@echo "${TITLE}Compiling ${YELLOW}$(BONUS_NAME)${NC}\c"
-	@$(COMPILE) $(BONUS_OBJS) $(LIBFT) -o $(BONUS_NAME)
-	@echo "${LGREEN} [OK]${NC}"
+# $(BONUS_NAME): $(LIBFT) $(BONUS_OBJS)
+# 	@echo "${TITLE}Compiling ${YELLOW}$(BONUS_NAME)${NC}\c"
+# 	@$(COMPILE) $(BONUS_OBJS) $(LIBFT) -o $(BONUS_NAME)
+# 	@echo "${LGREEN} [OK]${NC}"
 
 clean:
 	@echo "${LRED}Cleaning ${NC}libft"
-	@make -C $(LIBFT_DIR) fclean BIN="../../bin/libft"
+	@make -C $(dir $(LIBFT)) fclean BIN="../../bin/libft"
 	@echo "${LRED}Cleaning ${NC}binaries\c"
 	@rm -rf bin
 	@echo "${LGREEN} [OK]${NC}"
