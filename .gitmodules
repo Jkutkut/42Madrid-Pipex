@@ -1,3 +1,6 @@
 [submodule "src/libft"]
 	path = src/libft
 	url = https://github.com/jkutkut/42Madrid-Libft
+[submodule "src/ft_printf"]
+	path = src/ft_printf
+	url = git@github.com:Jkutkut/42Madrid-ft_printf.git
