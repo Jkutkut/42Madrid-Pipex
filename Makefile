@@ -20,10 +20,8 @@ COMPILE		=	$(CC) $(FLAGS) $(HEADERS)
 NAME		=	pipex
 
 LIBFT		=	src/libft/libft.a
-# LIBFT_DIR	=	$(dir $(LIBFT))
-
 PRINTF		=	src/ft_printf/libftprintf.a
-# PRINTF_DIR	=	$(dir $(PRINTF))
+LIB			=	$(LIBFT) $(PRINTF)
 
 TOOLS		=	close_pipes.c \
 				end_error_file.c \
@@ -59,9 +57,9 @@ debug: $(NAME)
 
 re: fclean all
 
-$(NAME):	$(LIBFT) $(OBJS)
+$(NAME):	$(LIB) $(OBJS)
 	@echo "${TITLE}Compiling ${YELLOW}$(NAME)${NC}\c"
-	@$(COMPILE) $(OBJS) $(LIBFT) -o $(NAME)
+	@$(COMPILE) $(OBJS) $(LIB) -o $(NAME)
 	@echo "${LGREEN} [OK]${NC}"
 
 bin/%.o: src/%.c
@@ -71,24 +69,20 @@ bin/%.o: src/%.c
 	@echo "${GREEN} [OK]${NC}"
 
 %.a:
-	@make $(dir $@)/Makefile
-	make -C $(dir $@) BIN="../../bin/$(dir ${@:src/%=%})"
+	@make $(dir $@)Makefile -s
+	@echo "${TITLE}Compiling${NC} ${YELLOW}${@:src/%=%}${NC}"
+	@make -C $(dir $@) BIN="../../bin/$(dir ${@:src/%=%})"
 
 %/Makefile:
-	@echo "${TITLE}Loading submodule${NC} $(dir ${@:src/%=%})"
+	@echo "${TITLE}Loading submodules${NC}"
 	@git submodule update --init --recursive
-	@echo "${TITLE}Submodule ${YELLOW} $(dir ${@:src/%=%}) loaded ${LGREEN}[OK]${NC}"
-
-# bonus: $(BONUS_NAME)
-
-# $(BONUS_NAME): $(LIBFT) $(BONUS_OBJS)
-# 	@echo "${TITLE}Compiling ${YELLOW}$(BONUS_NAME)${NC}\c"
-# 	@$(COMPILE) $(BONUS_OBJS) $(LIBFT) -o $(BONUS_NAME)
-# 	@echo "${LGREEN} [OK]${NC}"
+	@echo "${TITLE}Submodules loaded ${LGREEN}[OK]${NC}"
 
 clean:
 	@echo "${LRED}Cleaning ${NC}libft"
 	@make -C $(dir $(LIBFT)) fclean BIN="../../bin/libft"
+	@echo "${LRED}Cleaning ${NC}ft_printf"
+	@make -C $(dir $(PRINTF)) fclean BIN="../../bin/ft_printf"
 	@echo "${LRED}Cleaning ${NC}binaries\c"
 	@rm -rf bin
 	@echo "${LGREEN} [OK]${NC}"
@@ -98,4 +92,4 @@ fclean: clean
 	@rm -f $(NAME) $(BONUS_NAME)
 	@echo "${LGREEN} [OK]${NC}"
 
-.PHONY: all re fclean clean libft
+.PHONY: all re fclean clean
