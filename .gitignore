@@ -12,6 +12,10 @@ norminette_tester.sh
 test*
 tester*
 printfTest*
+PIPEX_TESTER/
+pipex-tester/
+pipexMedic/
+pipex_tester_42/
 
 .nope*
 output
