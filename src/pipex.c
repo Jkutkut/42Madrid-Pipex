@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 09:53:03 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/05/03 18:24:27 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/05/03 18:36:55 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ static void	exe_cmd(t_pipex *p)
 		return ;
 	if (p->cmd_idx == 0) {
 		use_pipe(&p->f_input, &p->fds[1]);
-		char str[1024];
-		read(STDIN, str, 1024);
-		ft_putendl_fd(str, STDERROR);
-		ft_putendl_fd(str, STDIN);
+		// char str[4096];
+		// read(STDIN, str, 4096);
+		// ft_putendl_fd(str, STDERROR);
+		// ft_putendl_fd(str, STDIN);
 	}
 	else if (p->cmd_idx == p->cmd_count - 1)
 	{
@@ -31,10 +31,10 @@ static void	exe_cmd(t_pipex *p)
 		// ft_putstr_fd("  p->fds[", 2);
 		// ft_putnbr_fd(p->cmd_idx * 2 - 2, 2);
 		// ft_putstr_fd("]\n\n", 2);
-		char str[1024];
-		read(STDIN, str, 1024);
-		ft_putendl_fd(str, STDERROR);
-		ft_putendl_fd(str, STDOUT);
+		// char str[1024];
+		// read(STDIN, str, 1024);
+		// ft_putendl_fd(str, STDERROR);
+		// ft_putendl_fd(str, STDOUT);
 	}
 	else
 	{
@@ -52,7 +52,7 @@ static void	exe_cmd(t_pipex *p)
 	if (!p->cmd_full)
 		free_end(p, 1, ERROR_CNF);
 
-	ft_putendl_fd(p->cmd_full, STDERROR);
+	ft_putendl_fd(p->cmd_full, STDERROR); // TODO DEBUG
 	if (execve(p->cmd_full, p->cmd_args, p->env_paths) == -1) // ends execution if successful
 		free_end(p, 1, ERROR_EXE_CMD);
 }
@@ -73,7 +73,7 @@ int	main(int argc, char **argv, char **envp)
 	init_pipex(&pipex, argc, argv, envp);
 	while (++pipex.cmd_idx < pipex.cmd_count) {
 		exe_cmd(&pipex);
-		check_this();
+		// check_this(); // TODO DEBUG
 	}
 	waitpid(-1, NULL, 0);
 	free_end(&pipex, 0, NULL);
