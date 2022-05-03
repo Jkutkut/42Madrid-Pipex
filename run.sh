@@ -6,7 +6,8 @@ outputFile="result.txt"
 make
 
 echo "----------------";
-./pipex $inputFile "cat -e" "grep COMPI" "wc -l" $outputFile &&
+./pipex $inputFile "cat -e" "wc -l" $outputFile &&
+# ./pipex $inputFile "cat -e" "grep Wall" "wc -l" $outputFile &&
 
 {
 	echo "----------------";
@@ -29,3 +30,5 @@ if [ -f $outputFile ]; then
 else
 	echo "Output file does not exist!"
 fi
+
+ps -lf
