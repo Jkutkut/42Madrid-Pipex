@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 12:18:37 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/04/23 23:15:36 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/05/03 19:24:42 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,12 @@
 
 void	end_error_file(int type, t_pipex *pipex, char *file)
 {
+	char error_msg[1024];
+
 	if (type == 0)
-		perror("No such file or directory: ");
+		ft_memmove(error_msg, "No such file or directory: ", 28);
 	else
-		perror("Not able to open: ");
-	perror(file);
-	free_end(pipex, 1, "\n");
+		ft_memmove(error_msg, "Not able to open: ", 19);
+	ft_strlcat(error_msg, file, ft_strlen(error_msg) + ft_strlen(file) + 1);
+	free_end(pipex, 1, error_msg);
 }
