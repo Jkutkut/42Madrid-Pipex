@@ -23,7 +23,8 @@ LIBFT		=	src/libft/libft.a
 PRINTF		=	src/ft_printf/libftprintf.a
 LIB			=	$(LIBFT) $(PRINTF)
 
-TOOLS		=	close_pipes.c \
+TOOLS		=	close_pipe.c \
+				close_pipes.c \
 				end_error_file.c \
 				end.c \
 				free_end.c \

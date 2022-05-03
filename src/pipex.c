@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 09:53:03 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/05/03 18:09:58 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/05/03 18:24:27 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,28 @@ static void	exe_cmd(t_pipex *p)
 	p->pid = fork();
 	if (p->pid)
 		return ;
-	if (p->cmd_idx == 0)
-		use_pipe(p->f_input, p->fds[1]);
+	if (p->cmd_idx == 0) {
+		use_pipe(&p->f_input, &p->fds[1]);
+		char str[1024];
+		read(STDIN, str, 1024);
+		ft_putendl_fd(str, STDERROR);
+		ft_putendl_fd(str, STDIN);
+	}
 	else if (p->cmd_idx == p->cmd_count - 1)
 	{
-		use_pipe(p->fds[p->cmd_idx * 2 - 2], p->f_output);
+		use_pipe(&p->fds[p->cmd_idx * 2 - 2], &p->f_output);
 		// ft_putendl_fd("last fd", 2);
 		// ft_putstr_fd("  p->fds[", 2);
 		// ft_putnbr_fd(p->cmd_idx * 2 - 2, 2);
 		// ft_putstr_fd("]\n\n", 2);
+		char str[1024];
+		read(STDIN, str, 1024);
+		ft_putendl_fd(str, STDERROR);
+		ft_putendl_fd(str, STDOUT);
 	}
 	else
 	{
-		use_pipe(p->fds[p->cmd_idx * 2 - 2], p->fds[p->cmd_idx * 2 + 1]);
+		use_pipe(&p->fds[p->cmd_idx * 2 - 2], &p->fds[p->cmd_idx * 2 + 1]);
 		// ft_putstr_fd("Index: ", 2);
 		// ft_putnbr_fd(p->cmd_idx * 2 - 2, 2);
 		// ft_putstr_fd("\n", 2);

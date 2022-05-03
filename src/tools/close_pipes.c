@@ -6,19 +6,11 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 19:11:37 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/04/26 11:04:16 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/05/03 18:19:13 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "tools.h"
-
-void	close_pipe(int *fd)
-{
-	if (*fd == -1)
-		return ;
-	close(*fd);
-	*fd = -1;
-}
 
 void	close_pipes(t_pipex *p)
 {
