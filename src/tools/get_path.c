@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 10:48:50 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/04/23 14:22:59 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/05/04 18:06:43 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,12 @@ char	*get_path(char *cmd, char **path_array)
 	if (!path_array || !cmd)
 		return (NULL);
 	i = 0;
-	// TODO check relative path
+	fd = open(cmd, O_RDONLY);
+	if (fd >= 0)
+	{
+		close(fd);
+		return (ft_strdup(cmd));
+	}
 	while (path_array[i])
 	{
 		path = make_path(path_array[i], cmd);
