@@ -2,7 +2,7 @@
 
 main() {
 	# Check if root of repository
-	if [! -d.git ]; then
+	if [! -d .git ]; then
 		echo "This script must be run from the root of the repository"
 		return
 	fi
