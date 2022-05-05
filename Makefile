@@ -12,7 +12,8 @@ TITLE		=	\033[38;5;33m
 LIB_CC		=	ar rcT
 CC			=	gcc
 FLAGS		=	-Wall -Wextra #-Werror
-HEADERS		=	-I ./include -I ./src/libft -I ./src/get_next_line
+#HEADERS		=	-I ./include  ./src/libft  ./src/ft_printf  ./src/get_next_line
+HEADERS		=	-I ./include -I ./src/libft -I ./src/ft_printf/include -I ./src/get_next_line/include
 COMPILE		=	$(CC) $(FLAGS) $(HEADERS)
 
 # Code variables
@@ -41,7 +42,6 @@ SRCS		=	$(NAME).c \
 OBJS		=	${SRCS:%.c=bin/%.o}
 
 # Bonus
-# BONUS_NAME	=	
 # BONUS_SRCS	=	
 # BONUS_OBJS	=	${BONUS_SRCS:%.c=bin/%.o}
 
