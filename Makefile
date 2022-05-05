@@ -12,7 +12,7 @@ TITLE		=	\033[38;5;33m
 LIB_CC		=	ar rcT
 CC			=	gcc
 FLAGS		=	-Wall -Wextra #-Werror
-HEADERS		=	-I ./include -I ./src/libft
+HEADERS		=	-I ./include -I ./src/libft -I ./src/get_next_line
 COMPILE		=	$(CC) $(FLAGS) $(HEADERS)
 
 # Code variables
@@ -21,7 +21,8 @@ NAME		=	pipex
 
 LIBFT		=	src/libft/libft.a
 PRINTF		=	src/ft_printf/libftprintf.a
-LIB			=	$(LIBFT) $(PRINTF)
+GNL			=	src/get_next_line/gnl.a
+LIB			=	$(LIBFT) $(PRINTF) $(GNL)
 
 TOOLS		=	close_pipe.c \
 				close_pipes.c \
