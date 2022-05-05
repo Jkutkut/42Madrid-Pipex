@@ -25,11 +25,12 @@ LIB			=	$(LIBFT) $(PRINTF)
 
 TOOLS		=	close_pipe.c \
 				close_pipes.c \
-				end_error_file.c \
 				end.c \
+				end_error_file.c \
 				free_end.c \
-				get_path_array.c \
 				get_path.c \
+				get_path_array.c \
+				heredoc.c \
 				init_pipex.c \
 				use_pipe.c
 
