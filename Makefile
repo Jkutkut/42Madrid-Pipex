@@ -48,6 +48,9 @@ OBJS		=	${SRCS:%.c=bin/%.o}
 # Makefile logic
 all: $(NAME)
 
+bonus: all # TODO DEBUG
+
+
 # DEBUG
 ifeq ($(UNAME_S),Linux)
 debug: FLAGS += -pedantic -fsanitize=address -fsanitize=leak -fsanitize=undefined -fsanitize=bounds -fsanitize=null -g3
