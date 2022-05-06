@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 09:53:03 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/05/04 20:15:20 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/05/06 17:14:22 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ static void	exe_cmd(t_pipex *p)
 	if (execve(p->cmd_full, p->cmd_args, p->env_paths) == -1) // ends execution if successful
 		free_end(p, 1, ERROR_EXE_CMD);
 }
+
 /*
 static void	check_this(void)
 {
@@ -43,6 +44,14 @@ static void	check_this(void)
 	system("ps -lf");
 }
 */
+
+/**
+ * @brief Simulates the pipe command from linux.
+ * 
+ * ./pipex file1 cmd1 ... cmdn file2
+ * 
+ * ./pipex here_doc LIMITER cmd1 ... cmdn file2
+ */
 int	main(int argc, char **argv, char **envp)
 {
 	t_pipex	pipex;
