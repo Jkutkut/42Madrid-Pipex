@@ -6,11 +6,11 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 22:15:32 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/04/26 10:58:53 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/05/06 18:45:45 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "tools.h"
+#include "pipex_tools.h"
 
 static void	free_array(char **array)
 {

@@ -6,11 +6,11 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 12:18:37 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/05/03 19:24:42 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/05/06 18:45:45 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "tools.h"
+#include "pipex_tools.h"
 
 void	end_error_file(int type, t_pipex *pipex, char *file)
 {

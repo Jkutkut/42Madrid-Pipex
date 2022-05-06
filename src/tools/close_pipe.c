@@ -6,11 +6,11 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 18:18:13 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/05/03 18:18:15 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/05/06 18:45:45 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "tools.h"
+#include "pipex_tools.h"
 
 void	close_pipe(int *fd)
 {

@@ -9,7 +9,6 @@ LBLUE		=	\033[1;34m
 TITLE		=	\033[38;5;33m
 
 # Compile variables
-LIB_CC		=	ar rcT
 CC			=	gcc
 FLAGS		=	-Wall -Wextra #-Werror
 #HEADERS		=	-I ./include  ./src/libft  ./src/ft_printf  ./src/get_next_line
