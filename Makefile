@@ -58,8 +58,6 @@ debug: FLAGS += -pedantic -fsanitize=address -g3
 endif
 debug: $(NAME)
 
-re: fclean all
-
 $(NAME):	$(LIB) $(OBJS)
 	@echo "\n${TITLE}Compiling ${YELLOW}$(NAME)${NC}\c"
 	@$(COMPILE) $(OBJS) $(LIB) -o $(NAME)
@@ -94,5 +92,9 @@ fclean: clean
 	@echo "${LRED}Cleaning ${NC}$(NAME) and $(BONUS_NAME)\c"
 	@rm -f $(NAME) $(BONUS_NAME)
 	@echo "${LGREEN} [OK]${NC}"
+
+re:
+	make fclean
+	make all
 
 .PHONY: all re fclean clean
