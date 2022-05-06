@@ -6,11 +6,11 @@ outputFile="result.txt"
 make
 
 # echo "./pipex $inputFile \"cat -e\" \"wc -l\" $outputFile"
-echo "./pipex here_doc end \"cat -e\" \"wc -l\" $outputFile"
+echo "./pipex here_doc end \"grep a\" \"wc -l\" $outputFile"
 
 echo "----------------";
 # ./pipex $inputFile "cat -e" "wc -l" $outputFile &&
-./pipex here_doc end "cat -e" "wc -l" $outputFile &&
+./pipex here_doc end "grep a" "wc -l" $outputFile &&
 # ./pipex $inputFile "cat -e" "grep Wall" "wc -l" $outputFile &&
 {
 	echo "----------------";
