@@ -6,14 +6,13 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 09:57:44 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/05/06 18:45:46 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/05/06 19:20:23 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PIPEX_H
 # define PIPEX_H
 
-# include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
 
