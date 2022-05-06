@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jre-gonz <jre-gonz@student.42madrid>       +#+  +:+       +#+        */
+/*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 16:44:16 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/05/05 17:21:26 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/05/06 16:48:04 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,19 @@
 #define ERROR_HEREDOC "here_doc failed"
 #define HEREDOC_FILE ".heredoc.tmp"
 #define HEREDOC "heredoc> "
+
+char	*store_next_line(char **buf, int fd)
+{
+	char *nl;
+	char *tmp;
+
+	nl = get_next_line(fd);
+	if (!nl)
+		return (nl);
+	tmp = *buf;
+	*buf = ft_strjoin(*buf, nl);
+	return (*buf);
+}
 
 void	heredoc(char *argv, t_pipex *pipex)
 {
@@ -26,7 +39,7 @@ void	heredoc(char *argv, t_pipex *pipex)
 	while (1)
 	{
 		write(1, HEREDOC, 9);
-		if (get_next_line(STDIN, &buf) < 0)
+		if (store_next_line(&buf, STDIN) < 0)
 			free_end(pipex, 1, ERROR_HEREDOC);
 		if (!ft_strncmp(argv, buf, ft_strlen(argv) + 1))
 			break ;
