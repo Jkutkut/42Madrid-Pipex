@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 16:44:16 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/05/06 16:48:04 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/05/06 17:29:28 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char	*store_next_line(char **buf, int fd)
 	return (*buf);
 }
 
-void	heredoc(char *argv, t_pipex *pipex)
+void	heredoc(char *delim, t_pipex *pipex)
 {
 	int		f;
 	char	*buf;
@@ -41,7 +41,7 @@ void	heredoc(char *argv, t_pipex *pipex)
 		write(1, HEREDOC, 9);
 		if (store_next_line(&buf, STDIN) < 0)
 			free_end(pipex, 1, ERROR_HEREDOC);
-		if (!ft_strncmp(argv, buf, ft_strlen(argv) + 1))
+		if (!ft_strncmp(delim, buf, ft_strlen(delim) + 1))
 			break ;
 		ft_putendl_fd(buf, f);
 		free(buf);
