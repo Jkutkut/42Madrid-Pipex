@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 10:47:55 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/05/30 14:53:13 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/05/30 15:25:22 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ void	init_pipex(t_pipex *pipex, int argc, char **argv, char **envp)
 		pipex->env_paths = malloc(sizeof(char *));
 		if (!pipex->env_paths)
 			end(1, ERROR_MALLOC);
+		pipex->env_paths[0] = NULL;
 	}
 
 	if (pipex->here_doc)
