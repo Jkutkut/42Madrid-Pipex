@@ -71,15 +71,12 @@ bin/%.o: src/%.c
 	@echo "${GREEN} [OK]${NC}"
 
 $(LIBFT):
-	@make $(dir $@)Makefile -s
 	@echo "${TITLE}Compiling${NC} ${YELLOW}${@:src/%=%}${NC}"
-	@make -C $(dir $@) BIN="../../bin/$(dir ${@:src/%=%})"
+	@make -C $(dir $@) BIN="../../bin/"
 
 clean:
-	@echo "${LRED}Cleaning ${NC}libft"
-	@make -C $(dir $(LIBFT)) fclean BIN="../../bin/libft"
-	@echo "${LRED}Cleaning ${NC}ft_printf"
-	@make -C $(dir $(PRINTF)) fclean BIN="../../bin/ft_printf"
+	@echo "${LRED}Cleaning ${NC}libft, printf and gnl"
+	@make -C $(dir $(LIBFT)) fclean BIN="../../bin/"
 	@echo "${LRED}Cleaning ${NC}binaries\c"
 	@rm -rf bin
 	@echo "${LGREEN} [OK]${NC}"
