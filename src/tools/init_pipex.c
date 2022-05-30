@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 10:47:55 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/05/30 18:20:41 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/05/30 19:25:39 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,37 @@ static void	init_pipes(t_pipex *pipex)
 	pipex->cmd_idx = -1;
 }
 
+static void	init_input(t_pipex *pipex, char ***argv)
+{
+	if (!ft_strncmp((*argv)[1], "here_doc", 9))
+	{
+		ft_putendl_fd("open heredoc", STDIN);
+		pipex->here_doc = 1;
+		heredoc((*argv)[2], pipex);
+		(*argv)++;
+	}
+	else
+	{
+		ft_putendl_fd("open no heredoc", STDIN);
+		pipex->f_input = open((*argv)[1], O_RDONLY);
+		if (pipex->f_input == -1)
+			end_error_file(0, pipex, *((*argv) + 1));
+	}
+}
+
+static void	init_output(t_pipex *pipex, char *path)
+{
+	int	f_out_oflag;
+
+	if (pipex->here_doc)
+		f_out_oflag = O_WRONLY | O_CREAT | O_APPEND;
+	else
+		f_out_oflag = O_CREAT | O_RDWR | O_TRUNC;
+	pipex->f_output = open(path, f_out_oflag, 0000644);
+	if (pipex->f_output == -1)
+		end_error_file(1, pipex, path);
+}
+
 /**
  * @brief Inits the pipex struct with the given argv and envp.
  */
@@ -33,20 +64,7 @@ void	init_pipex(t_pipex *pipex, int argc, char **argv, char **envp)
 {
 	pipex->env_paths = NULL;
 	pipex->here_doc = 0;
-	if (!ft_strncmp(argv[1], "here_doc", 9))
-	{
-		ft_putendl_fd("open heredoc", STDIN);
-		pipex->here_doc = 1;
-		heredoc(argv[2], pipex);
-		argv++;
-	}
-	else
-	{
-		ft_putendl_fd("open no heredoc", STDIN);
-		pipex->f_input = open(argv[1], O_RDONLY);
-		if (pipex->f_input == -1)
-			end_error_file(0, pipex, *(argv + 1));
-	}
+	init_input(pipex, &argv);
 	pipex->cmd_count = argc - 3 - pipex->here_doc;
 	pipex->fds = malloc(sizeof(int) * (pipex->cmd_count - 1) * 2);
 	if (!pipex->fds)
@@ -60,12 +78,6 @@ void	init_pipex(t_pipex *pipex, int argc, char **argv, char **envp)
 			end(1, ERROR_MALLOC);
 		pipex->env_paths[0] = NULL;
 	}
-
-	if (pipex->here_doc)
-		pipex->f_output = open(argv[argc - 1 - pipex->here_doc], O_WRONLY | O_CREAT | O_APPEND, 0000644);
-	else
-		pipex->f_output = open(argv[argc - 1 - pipex->here_doc], O_CREAT | O_RDWR | O_TRUNC, 0000644);
-	if (pipex->f_output == -1)
-		end_error_file(1, pipex, argv[argc - 1]);
+	init_output(pipex, argv[argc - 1 - pipex->here_doc]);
 	init_pipes(pipex);
 }
