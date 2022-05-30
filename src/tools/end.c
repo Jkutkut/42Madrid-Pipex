@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 10:44:21 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/05/06 18:45:45 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/05/30 18:36:53 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
  */
 void	end(int endtype, char *msg)
 {
-	if (endtype == 1)
+	if (msg != NULL)
 	{
 		ft_putstr_fd("Error:\n  ", STDERROR);
 		ft_putstr_fd(msg, STDERROR);
