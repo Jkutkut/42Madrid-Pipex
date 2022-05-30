@@ -6,29 +6,11 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 10:47:55 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/05/30 21:18:38 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/05/30 21:38:07 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex_tools.h"
-
-static void	init_input(t_pipex *pipex, char ***argv)
-{
-	if (!ft_strncmp((*argv)[1], "here_doc", 9))
-	{
-		ft_putendl_fd("open heredoc", STDIN);
-		pipex->here_doc = 1;
-		heredoc((*argv)[2], pipex);
-		(*argv)++;
-	}
-	else
-	{
-		ft_putendl_fd("open no heredoc", STDIN);
-		pipex->f_input = open((*argv)[1], O_RDONLY);
-		if (pipex->f_input == -1)
-			end_error_file(0, pipex, *((*argv) + 1));
-	}
-}
 
 static void	init_output(t_pipex *pipex, char *path)
 {

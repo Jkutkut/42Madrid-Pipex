@@ -31,6 +31,7 @@ TOOLS		=	close_pipe.c \
 				get_path.c \
 				get_path_array.c \
 				heredoc.c \
+				init_input.c \
 				init_pipes.c \
 				init_pipex.c \
 				use_pipe.c
