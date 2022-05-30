@@ -11,8 +11,7 @@ TITLE		=	\033[38;5;33m
 # Compile variables
 CC			=	gcc
 FLAGS		=	-Wall -Wextra #-Werror
-#HEADERS		=	-I ./include  ./src/libft  ./src/ft_printf  ./src/get_next_line
-HEADERS		=	-I ./include -I ./src/libft -I ./src/ft_printf/include -I ./src/get_next_line/include
+HEADERS		=	-I ./include -I ./src/libft/include
 COMPILE		=	$(CC) $(FLAGS) $(HEADERS)
 
 # Code variables
@@ -20,8 +19,8 @@ COMPILE		=	$(CC) $(FLAGS) $(HEADERS)
 NAME		=	pipex
 
 LIBFT		=	src/libft/libft.a
-PRINTF		=	src/ft_printf/libftprintf.a
-GNL			=	src/get_next_line/gnl.a
+PRINTF		=	src/libft/libftprintf.a
+GNL			=	src/libft/get_next_line.a
 LIB			=	$(LIBFT) $(PRINTF) $(GNL)
 
 TOOLS		=	close_pipe.c \
@@ -71,15 +70,10 @@ bin/%.o: src/%.c
 	@$(COMPILE) -c $< -o $@ $(DEBUG)
 	@echo "${GREEN} [OK]${NC}"
 
-%.a:
+$(LIBFT):
 	@make $(dir $@)Makefile -s
 	@echo "${TITLE}Compiling${NC} ${YELLOW}${@:src/%=%}${NC}"
 	@make -C $(dir $@) BIN="../../bin/$(dir ${@:src/%=%})"
-
-%/Makefile:
-	@echo "${TITLE}Loading submodules${NC}"
-	@git submodule update --init --recursive
-	@echo "${TITLE}Submodules loaded ${LGREEN}[OK]${NC}"
 
 clean:
 	@echo "${LRED}Cleaning ${NC}libft"
