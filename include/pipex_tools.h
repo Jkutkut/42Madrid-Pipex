@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 10:47:56 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/05/30 21:42:41 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/05/30 22:03:59 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	close_pipe(int *fd);
 void	close_pipes(t_pipex *p);
 void	end_error_file(int type, t_pipex *pipex, char *file);
 void	end(int endtype, char *msg);
+void	free_array(char **array);
 void	free_end(t_pipex *p, int endtype, char *msg);
 char	**get_path_array(char **envp);
 char	*get_path(char *cmd_full, char **envp);

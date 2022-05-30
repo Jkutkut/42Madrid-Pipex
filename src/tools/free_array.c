@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_end.c                                         :+:      :+:    :+:   */
+/*   free_array.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/23 22:15:32 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/05/30 22:02:13 by jre-gonz         ###   ########.fr       */
+/*   Created: 2022/05/30 22:02:23 by jre-gonz          #+#    #+#             */
+/*   Updated: 2022/05/30 22:02:24 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex_tools.h"
 
-void	free_end(t_pipex *p, int endtype, char *msg)
+/**
+ * @brief Frees the given char array.
+ * 
+ * @param array The array to free.
+ */
+void	free_array(char **array)
 {
-	if (p->f_input != -1)
-		close(p->f_input);
-	if (p->f_output != -1)
-		close(p->f_output);
-	if (p->env_paths)
-		free_array(p->env_paths);
-	if (p->fds)
-	{
-		close_pipes(p);
-		free(p->fds);
-	}
-	end(endtype, msg);
+	int	i;
+
+	if (!array)
+		return ;
+	i = 0;
+	while (*(array + i))
+		free(*(array + i++));
+	free(array);
 }

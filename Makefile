@@ -25,8 +25,9 @@ LIB			=	$(LIBFT) $(PRINTF) $(GNL)
 
 TOOLS		=	close_pipe.c \
 				close_pipes.c \
-				end.c \
 				end_error_file.c \
+				end.c \
+				free_array.c \
 				free_end.c \
 				get_path.c \
 				get_path_array.c \
