@@ -6,12 +6,19 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 10:48:50 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/05/30 22:08:14 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/05/30 22:14:57 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex_tools.h"
 
+/**
+ * @brief Attempt to get the path of the given command with the env PATH.
+ * 
+ * @param cmd The command to search for.
+ * @param path_array The array of paths to search in (also uses the current).
+ * @return char* The path of the command or NULL if not found.
+ */
 char	*get_path(char *cmd, char **path_array)
 {
 	int		i;
