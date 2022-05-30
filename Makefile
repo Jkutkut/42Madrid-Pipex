@@ -36,6 +36,7 @@ TOOLS		=	close_pipe.c \
 				init_output.c \
 				init_pipes.c \
 				init_pipex.c \
+				make_path.c \
 				use_pipe.c
 
 SRCS		=	$(NAME).c \

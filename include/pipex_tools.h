@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 10:47:56 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/05/30 22:03:59 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/05/30 22:10:08 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	init_input(t_pipex *pipex, char ***argv);
 void	init_output(t_pipex *pipex, char *path);
 void	init_pipes(t_pipex *pipex);
 void	init_pipex(t_pipex *pipex, int argc, char **argv, char **envp);
+char	*make_path(char *path, char *cmd);
 void	use_pipe(int *fd_in, int *fd_out);
 
 #endif
