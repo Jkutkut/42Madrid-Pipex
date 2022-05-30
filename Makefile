@@ -31,6 +31,7 @@ TOOLS		=	close_pipe.c \
 				get_path.c \
 				get_path_array.c \
 				heredoc.c \
+				init_pipes.c \
 				init_pipex.c \
 				use_pipe.c
 
@@ -86,8 +87,8 @@ fclean: clean
 	@rm -f $(NAME) $(BONUS_NAME)
 	@echo "${LGREEN} [OK]${NC}"
 
-re:
-	make fclean
-	make all
+re: fclean all
+	@# make fclean
+	@# make all
 
 .PHONY: all re fclean clean
