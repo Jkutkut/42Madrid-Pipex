@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 19:11:37 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/05/06 18:45:45 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/05/30 19:01:09 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	close_pipes(t_pipex *p)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < p->cmd_count - 1)

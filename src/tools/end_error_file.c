@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 12:18:37 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/05/06 18:45:45 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/05/30 19:00:25 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	end_error_file(int type, t_pipex *pipex, char *file)
 {
-	char error_msg[1024];
+	char	error_msg[1024];
 
 	if (type == 0)
 		ft_memmove(error_msg, "No such file or directory: ", 28);
