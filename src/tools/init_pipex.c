@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 10:47:55 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/05/30 15:25:22 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/05/30 18:20:41 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ void	init_pipex(t_pipex *pipex, int argc, char **argv, char **envp)
 	{
 		ft_putendl_fd("open no heredoc", STDIN);
 		pipex->f_input = open(argv[1], O_RDONLY);
-		ft_printf_fd(STDIN, "finput: %d\n", pipex->f_input);
 		if (pipex->f_input == -1)
 			end_error_file(0, pipex, *(argv + 1));
 	}

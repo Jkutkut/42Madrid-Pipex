@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 09:53:03 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/05/30 16:53:07 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/05/30 18:38:41 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,16 @@ static void	exe_cmd(t_pipex *p)
 		free_end(p, 1, ERROR_MALLOC);
 	p->cmd_full = get_path(p->cmd_args[0], p->env_paths);
 	if (!p->cmd_full)
-		free_end(p, 1, ERROR_CNF);
+		free_end(p, ERROR_CNF_CODE, ERROR_CNF);
 
 	ft_putendl_fd(p->cmd_full, STDERROR); // TODO DEBUG
 	if (execve(p->cmd_full, p->cmd_args, p->env_paths) == -1) // ends execution if successful
 		free_end(p, 1, ERROR_EXE_CMD);
+}
+
+static int wexitstatus(int status)
+{
+	return (((status) & 0xff00) >> 8);
 }
 
 /*
@@ -63,12 +68,9 @@ int	main(int argc, char **argv, char **envp)
 		exe_cmd(&pipex);
 	int result = 0;
 	int idx = 0;
-	while (++idx < pipex.cmd_count) {
-		// system("ps");
-		// ft_printf("Waiting for %dth child.\n", pipex.cmd_idx);
-		result = waitpid(-1, NULL, 0);
-	}
-	ft_printf("Done waiting.\n");
-	free_end(&pipex, result, NULL);
+	while (++idx < pipex.cmd_count - 1)
+		waitpid(-1, NULL, 0);
+	waitpid(-1, &result, 0);
+	free_end(&pipex, wexitstatus(result), NULL);
 	return (0);
 }
