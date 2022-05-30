@@ -6,7 +6,7 @@ outputFile="result.txt"
 make
 
 # echo "./pipex $inputFile \"cat -e\" \"wc -l\" $outputFile"
-echo "./pipex here_doc end \"grep a\" \"wc -l\" $outputFile"
+echo "./pipex here_doc end \"grep a\" cat cat cat cat \"wc -l\" $outputFile"
 
 echo "----------------";
 # ./pipex $inputFile "cat -e" "wc -l" $outputFile &&

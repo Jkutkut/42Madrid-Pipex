@@ -82,7 +82,7 @@ clean: # TODO compile libft
 	@echo "${LGREEN} [OK]${NC}"
 
 fclean: clean
-	@echo "${LRED}Cleaning ${NC}$(NAME) and $(BONUS_NAME)\c"
+	@echo "${LRED}Cleaning ${NC}$(NAME)\c"
 	@rm -f $(NAME) $(BONUS_NAME)
 	@echo "${LGREEN} [OK]${NC}"
 
