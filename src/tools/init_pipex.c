@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 10:47:55 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/05/24 15:50:19 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/05/30 14:53:13 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ static void	init_pipes(t_pipex *pipex)
  */
 void	init_pipex(t_pipex *pipex, int argc, char **argv, char **envp)
 {
+	pipex->env_paths = NULL;
 	pipex->here_doc = 0;
 	if (!ft_strncmp(argv[1], "here_doc", 9))
 	{
