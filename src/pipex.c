@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 09:53:03 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/05/30 16:07:20 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/05/30 16:31:54 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ static void	exe_cmd(t_pipex *p)
 		use_pipe(&p->fds[p->cmd_idx * 2 - 2], &p->f_output);
 	else
 		use_pipe(&p->fds[p->cmd_idx * 2 - 2], &p->fds[p->cmd_idx * 2 + 1]);
-	//waitpid(-1, NULL, 0);
 	close_pipes(p); // Close now, we have it on stdin and stdout
 	p->cmd_args = ft_split(p->cmds[p->cmd_idx], ' ');
 	if (!p->cmd_args)
@@ -62,9 +61,11 @@ int	main(int argc, char **argv, char **envp)
 	init_pipex(&pipex, argc, argv, envp);
 	while (++pipex.cmd_idx < pipex.cmd_count)
 		exe_cmd(&pipex);
-	while (pipex.cmd_idx-- > 0)
+	while (pipex.cmd_idx-- > 0) {
+		ft_printf("Waiting for child. %d left.\n", pipex.cmd_idx);
 		waitpid(-1, NULL, 0);
-	getchar();
+	}
+	// getchar();
 	free_end(&pipex, 0, NULL);
 	return (0);
 }
