@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 09:53:03 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/05/30 16:31:54 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/05/30 16:51:42 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,11 +61,13 @@ int	main(int argc, char **argv, char **envp)
 	init_pipex(&pipex, argc, argv, envp);
 	while (++pipex.cmd_idx < pipex.cmd_count)
 		exe_cmd(&pipex);
-	while (pipex.cmd_idx-- > 0) {
-		ft_printf("Waiting for child. %d left.\n", pipex.cmd_idx);
-		waitpid(-1, NULL, 0);
+	int result = 0;
+	while (++result < pipex.cmd_count) {
+		// system("ps");
+		// ft_printf("Waiting for %dth child.\n", pipex.cmd_idx);
+		result = waitpid(-1, NULL, 0);
 	}
-	// getchar();
+	ft_printf("Done waiting.\n");
 	free_end(&pipex, 0, NULL);
 	return (0);
 }
