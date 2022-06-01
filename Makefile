@@ -31,7 +31,7 @@ TOOLS		=	close_pipe.c \
 				free_end.c \
 				get_path.c \
 				get_path_array.c \
-				heredoc.c \ # TODO refactor
+				heredoc.c \
 				init_input.c \
 				init_output.c \
 				init_pipes.c \

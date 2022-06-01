@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 10:47:56 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/05/30 22:10:08 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/06/01 14:16:08 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include "pipex.h"
 
-#define ERROR_HEREDOC "here_doc failed"
 #define HEREDOC_FILE ".heredoc.tmp"
 #define HEREDOC "heredoc> "
 
