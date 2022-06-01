@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 10:05:54 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/06/01 14:16:04 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/06/01 14:23:37 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # define ERROR_PIPE_INIT "Error when initializing pipes.\n"
 # define ERROR_CNF "Command not found or not allowed to execute.\n"
 # define ERROR_CNF_CODE 127
-#define ERROR_HEREDOC "here_doc failed"
+# define ERROR_HEREDOC "here_doc failed"
 # define ERROR_EXE_CMD "Error when executing the command.\n"
 
 #endif

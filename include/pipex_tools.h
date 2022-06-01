@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 10:47:56 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/06/01 14:16:08 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/06/01 14:23:50 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 # include "pipex.h"
 
-#define HEREDOC_FILE ".heredoc.tmp"
-#define HEREDOC "heredoc> "
+# define HEREDOC_FILE ".heredoc.tmp"
+# define HEREDOC "heredoc> "
 
 void	close_pipe(int *fd);
 void	close_pipes(t_pipex *p);
