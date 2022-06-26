@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 09:53:03 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/06/26 09:12:16 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/06/26 12:44:03 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,11 @@ static int	wexitstatus(int status)
 	return (((status) & 0xff00) >> 8);
 }
 
+static int	wifexited(int status)
+{
+	return (((status) & 0x7f) == 0);
+}
+
 /**
  * @brief Simulates the pipe command from linux.
  * 
@@ -60,11 +65,13 @@ int	main(int argc, char **argv, char **envp)
 		end(1, ERROR_ARGC);
 	init_pipex(&pipex, argc, argv, envp);
 	while (++pipex.cmd_idx < pipex.cmd_count)
-		exe_cmd(&pipex);
+		pipex.pid[pipex.cmd_idx - 1] = exe_cmd(&pipex);
 	idx = 0;
-	while (++idx < pipex.cmd_count - 1)
-		waitpid(-1, NULL, 0);
-	waitpid(-1, &result, 0);
-	free_end(&pipex, wexitstatus(result), NULL);
-	return (0);
+	while (idx++ < pipex.cmd_count - 1)
+		waitpid(pipex.pid[idx], NULL, 0);
+	waitpid(pipex.pid[idx], &result, 0);
+	if (wifexited(result))
+		free_end(&pipex, wexitstatus(result), NULL);
+	free_end(&pipex, EXIT_SUCCESS, NULL);
+	return (EXIT_SUCCESS);
 }
