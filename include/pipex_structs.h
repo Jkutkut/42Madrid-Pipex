@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 09:33:44 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/06/26 09:13:14 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/06/26 12:16:37 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,9 @@
 // 	 */
 // 	int		here_doc;
 // 	/**
-// 	 * @brief Process id of the current process.
+// 	 * @brief Process ids of the processes.
 // 	 */
-// 	int		pid;
+// 	int		*pid;
 // }				t_pipex;
 
 /**
@@ -92,7 +92,7 @@ typedef struct s_pipex
 	char	**cmd_args;
 	char	*cmd_full;
 	int		here_doc;
-	int		pid;
+	int		*pid;
 }				t_pipex;
 
 #endif

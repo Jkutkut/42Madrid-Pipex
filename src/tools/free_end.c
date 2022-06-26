@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 22:15:32 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/05/30 22:06:54 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/06/26 11:59:21 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,7 @@ void	free_end(t_pipex *p, int endtype, char *msg)
 		close_pipes(p);
 		free(p->fds);
 	}
+	if (p->pid)
+		free(p->pid);
 	end(endtype, msg);
 }
