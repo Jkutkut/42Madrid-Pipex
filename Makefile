@@ -56,11 +56,12 @@ bonus: all # TODO DEBUG
 
 
 # DEBUG
-ifeq ($(UNAME_S),Linux)
+OS	=	$(shell uname -s)
+ifeq ($(OS),Linux)
 debug: FLAGS += -pedantic -fsanitize=address -fsanitize=leak -fsanitize=undefined -fsanitize=bounds -fsanitize=null -g3
 endif
-ifeq ($(UNAME_S),Darwin)
-debug: FLAGS += -pedantic -fsanitize=address -g3
+ifeq ($(OS),Darwin)
+debug: FLAGS += -fsanitize=address -g3
 endif
 debug: $(NAME)
 
