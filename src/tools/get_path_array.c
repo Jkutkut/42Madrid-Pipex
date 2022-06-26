@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 10:20:32 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/05/30 19:00:07 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/06/26 08:56:23 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	**get_path_array(char **envp)
 	while (envp[i])
 	{
 		if (!ft_strncmp(envp[i], "PATH=", 5))
-			return (ft_split(ft_strchr(envp[i], '/'), ':'));
+			return (ft_split(ft_strchr(envp[i], '=') + 1, ':'));
 		i++;
 	}
 	return (NULL);
