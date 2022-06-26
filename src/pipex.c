@@ -12,11 +12,13 @@
 
 #include "pipex.h"
 
-static void	exe_cmd(t_pipex *p)
+static int	exe_cmd(t_pipex *p)
 {
-	p->pid = fork();
-	if (p->pid)
-		return ;
+	int	pid;
+
+	pid = fork();
+	if (pid)
+		return (pid);
 	if (p->cmd_idx == 0)
 		use_pipe(&p->f_input, &p->fds[1]);
 	else if (p->cmd_idx == p->cmd_count - 1)
@@ -33,6 +35,7 @@ static void	exe_cmd(t_pipex *p)
 		free_end(p, ERROR_CNF_CODE, ERROR_CNF);
 	if (execve(p->cmd_full, p->cmd_args, p->envp) == -1)
 		free_end(p, 1, ERROR_EXE_CMD);
+	return (pid);
 }
 
 static int	wexitstatus(int status)
