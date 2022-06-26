@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 09:33:44 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/06/01 14:26:21 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/06/26 09:13:14 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,10 @@
 // 	 * @brief Array with the cmds (argv)
 // 	 */
 // 	char	**cmds;
+// 	/**
+// 	 * Enviroment variable given by the main.
+// 	 */
+// 	char	**envp;
 // 	/**
 // 	 * @brief Array with the path array.
 // 	 * Result of processing envp
@@ -80,6 +84,7 @@ typedef struct s_pipex
 	int		f_input;
 	int		f_output;
 	char	**cmds;
+	char	**envp;
 	char	**env_paths;
 	int		cmd_count;
 	int		cmd_idx;
