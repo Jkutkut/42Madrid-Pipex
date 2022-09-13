@@ -6,6 +6,7 @@ bin
 *.o
 *.a
 .heredoc.tmp
+*.swp
 
 run
 norminette_tester.sh
