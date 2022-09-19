@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 17:15:28 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/09/13 19:42:45 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/09/19 15:50:36 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,13 @@
  */
 int	main(int argc, char **argv, char **envp)
 {
-	// t_pipex	pipex;
+	t_pipex	pipex;
 	// int		result;
 	// int		idx;
 
-	// if (argc < 5)
-	// 	end(1, ERROR_ARGC);
-	// init_pipex(&pipex, argc, argv, envp);
+	if (argc < 5)
+	 	end(1, ERROR_ARGC);
+	init_pipex(&pipex, argc, argv, envp);
 	// while (++pipex.cmd_idx < pipex.cmd_count)
 	// 	pipex.pid[pipex.cmd_idx - 1] = exe_cmd(&pipex);
 	// idx = 0;
