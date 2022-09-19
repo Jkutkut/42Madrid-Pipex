@@ -11,16 +11,17 @@ TITLE		=	\033[38;5;33m
 # Compile variables
 CC			=	gcc
 FLAGS		=	-Wall -Wextra #-Werror
-HEADERS		=	-I ./include -I ./src/libft/include -I ./src/libft/libft.h
+HEADERS		=	-I ./include -I ./libft/include/
 COMPILE		=	$(CC) $(FLAGS) $(HEADERS)
 
 # Code variables
 
-LIBS		=	src/libft/libft.a
+LIB		=	libft/libft.a
 
 NAME		=	pipex
 
-TOOLS		=	end.c
+TOOLS		=	end.c \
+				init_pipex.c
 
 # TOOLS		=	close_pipe.c \
 				close_pipes.c \
@@ -65,21 +66,25 @@ debug: $(NAME)
 
 $(NAME):	$(OBJS) $(LIB)
 	@echo "\n${TITLE}Compiling ${YELLOW}$(NAME)${NC}\c"
-	@$(COMPILE) $(OBJS) $(LIB) -o $(NAME)
+	$(COMPILE) $(LIB) $(OBJS) -o $(NAME)
 	@echo "${LGREEN} [OK]${NC}\n"
 
 bin/%.o: src/%.c
 	@echo "- ${TITLE}Compiling${NC} $< -> $@\c"
 	@mkdir -p $(dir $@)
-	@$(COMPILE) -c $< -o $@ $(DEBUG)
+	$(COMPILE) -c $< -o $@ $(DEBUG)
 	@echo "${GREEN} [OK]${NC}"
+
+libft/libft.a:
+	# TODO
+	@make -C libft all
 
 clean:
 	@echo "${LRED}Cleaning ${NC}binaries\c"
 	@rm -rf bin
 	@echo "${LGREEN} [OK]${NC}"
 	@echo "${LRED}Cleaning ${NC}libft"
-	@make fclean -C ./src/libft/
+	@make fclean -C ./libft/
 	@echo "Libft cleaned${LGREEN} [OK]${NC}"
 
 fclean: clean

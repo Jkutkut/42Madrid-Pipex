@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 09:57:44 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/09/19 15:53:57 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/09/19 18:53:42 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include <errno.h>
 # include <sys/stat.h>
 
+# include "libft.h"
 # include "pipex_msg.h"
 # include "pipex_structs.h"
 
@@ -46,10 +47,12 @@
 // Arguments parsing
 void	init_pipex(t_pipex *pipex, int argc, char **argv, char **envp);
 
+// end.c
+void	end(int endtype, char *msg);
+
 // void	close_pipe(int *fd);
 // void	close_pipes(t_pipex *p);
 // void	end_error_file(int type, t_pipex *pipex, char *file);
-// void	end(int endtype, char *msg);
 // void	free_array(char **array);
 // void	free_end(t_pipex *p, int endtype, char *msg);
 // char	**get_path_array(char **envp);
