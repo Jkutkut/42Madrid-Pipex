@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 09:57:44 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/05/06 19:20:23 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/09/19 15:21:21 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,6 @@
 # include <sys/wait.h>
 # include <errno.h>
 # include <sys/stat.h>
-
-# include "libft.h"
-# include "ft_printf.h"
-# include "get_next_line.h"
 
 # include "pipex_msg.h"
 # include "pipex_structs.h"

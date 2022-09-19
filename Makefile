@@ -18,12 +18,7 @@ COMPILE		=	$(CC) $(FLAGS) $(HEADERS)
 
 NAME		=	pipex
 
-LIBFT		=	src/libft/libft.a
-PRINTF		=	src/libft/libftprintf.a
-GNL			=	src/libft/get_next_line.a
-LIB			=	$(LIBFT) $(PRINTF) $(GNL)
-
-TOOLS		=	close_pipe.c \
+# TOOLS		=	close_pipe.c \
 				close_pipes.c \
 				end_error_file.c \
 				end.c \
@@ -33,7 +28,6 @@ TOOLS		=	close_pipe.c \
 				get_path_array.c \
 				heredoc.c \
 				init_input.c \
-				init_output.c \
 				init_pipes.c \
 				init_pipex.c \
 				make_path.c \
@@ -65,9 +59,9 @@ debug: FLAGS += -fsanitize=address -g3
 endif
 debug: $(NAME)
 
-$(NAME):	$(LIB) $(OBJS)
+$(NAME):	$(OBJS)
 	@echo "\n${TITLE}Compiling ${YELLOW}$(NAME)${NC}\c"
-	@$(COMPILE) $(OBJS) $(LIB) -o $(NAME)
+	@$(COMPILE) $(OBJS) -o $(NAME)
 	@echo "${LGREEN} [OK]${NC}\n"
 
 bin/%.o: src/%.c
@@ -76,13 +70,7 @@ bin/%.o: src/%.c
 	@$(COMPILE) -c $< -o $@ $(DEBUG)
 	@echo "${GREEN} [OK]${NC}"
 
-$(LIBFT):
-	@echo "${TITLE}Compiling${NC} ${YELLOW}${@:src/%=%}${NC}"
-	@make -C $(dir $@) BIN="../../bin/"
-
-clean: # TODO compile libft
-	@#echo "${LRED}Cleaning ${NC}libft, printf and gnl"
-	@#make -C $(dir $(LIBFT)) fclean BIN="../../bin/"
+clean:
 	@echo "${LRED}Cleaning ${NC}binaries\c"
 	@rm -rf bin
 	@echo "${LGREEN} [OK]${NC}"
