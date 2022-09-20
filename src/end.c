@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 10:44:21 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/09/20 14:01:11 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/09/20 18:35:17 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,8 @@ void	free_end(t_pipex *p, int endtype, char *msg)
 	}
 	if (p->pid)
 		free(p->pid);
-	// if (p->heredoc)
-	// TODO remove heredoc_file
+	if (p->heredoc)
+		unlink(HEREDOC_FILE);
 	end(endtype, msg);
 }
 
