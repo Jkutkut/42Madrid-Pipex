@@ -12,11 +12,11 @@ TITLE		=	\033[38;5;33m
 CC			=	gcc
 FLAGS		=	-Wall -Wextra #-Werror
 HEADERS		=	-I ./include -I ./libft/include/
-COMPILE		=	$(CC) $(FLAGS) $(HEADERS)
+COMPILE		=	$(CC) $(FLAGS)
 
 # Code variables
 
-LIB		=	libft/libft.a
+LIB			=	libft/libft.a
 
 NAME		=	pipex
 
@@ -38,8 +38,8 @@ TOOLS		=	end.c \
 				make_path.c \
 				use_pipe.c
 
-SRCS		=	$(NAME).c \
-				${TOOLS:%=%}
+SRCS		=	${TOOLS:%=%} \
+				$(NAME).c
 
 OBJS		=	${SRCS:%.c=bin/%.o}
 
@@ -66,13 +66,13 @@ debug: $(NAME)
 
 $(NAME):	$(OBJS) $(LIB)
 	@echo "\n${TITLE}Compiling ${YELLOW}$(NAME)${NC}\c"
-	$(COMPILE) $(LIB) $(OBJS) -o $(NAME)
+	@$(COMPILE) $(OBJS) $(HEADERS) $(LIB) -o $(NAME)
 	@echo "${LGREEN} [OK]${NC}\n"
 
 bin/%.o: src/%.c
 	@echo "- ${TITLE}Compiling${NC} $< -> $@\c"
 	@mkdir -p $(dir $@)
-	$(COMPILE) -c $< -o $@ $(DEBUG)
+	@$(COMPILE) -c $< -o $@ $(HEADERS)
 	@echo "${GREEN} [OK]${NC}"
 
 libft/libft.a:
