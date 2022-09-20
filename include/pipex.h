@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 09:57:44 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/09/19 18:53:42 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/09/20 11:14:35 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,17 @@
 # define PIPE_READ 0
 # define PIPE_WRITE 1
 
+// heredoc
+# define HEREDOC "heredoc"
 # define HEREDOC_FILE ".heredoc.tmp"
-# define HEREDOC "heredoc> "
+# define HEREDOC_SHELL "heredoc> "
 
 /***************************************/
 
 // Arguments parsing
 void	init_pipex(t_pipex *pipex, int argc, char **argv, char **envp);
+void	init_input(t_pipex *pipex, char ***argv);
+
 
 // end.c
 void	end(int endtype, char *msg);
@@ -58,7 +62,6 @@ void	end(int endtype, char *msg);
 // char	**get_path_array(char **envp);
 // char	*get_path(char *cmd_full, char **envp);
 // void	heredoc(char *argv, t_pipex *pipex);
-// void	init_input(t_pipex *pipex, char ***argv);
 // void	init_output(t_pipex *pipex, char *path);
 // void	init_pipes(t_pipex *pipex);
 // char	*make_path(char *path, char *cmd);

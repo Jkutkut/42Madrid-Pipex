@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 09:33:44 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/09/19 15:30:00 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/09/20 11:05:52 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ typedef struct s_pipex
 	/**
 	 * @brief 0 if here_doc is not present, 1 if it is.
 	 */
-	int		here_doc;
+	int		heredoc;
 	/**
 	 * @brief Process ids of the processes.
 	 */
@@ -92,7 +92,7 @@ typedef struct s_pipex
 	int		*fds;
 	char	**cmd_args;
 	char	*cmd_full;
-	int		here_doc;
+	int		heredoc;
 	int		*pid;
 }				t_pipex;
 */
