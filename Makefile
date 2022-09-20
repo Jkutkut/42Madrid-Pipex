@@ -11,19 +11,20 @@ TITLE		=	\033[38;5;33m
 # Compile variables
 CC			=	gcc
 FLAGS		=	-Wall -Wextra -Werror
-HEADERS		=	-I ./include -I ./libft/include/
+HEADERS		=	-I ./include -I ./libft/include/ -I ./gnl/include/
 COMPILE		=	$(CC) $(FLAGS)
 
 # Code variables
 
-LIB			=	libft/libft.a
+LIB			=	libft/libft.a gnl/gnl.a
 
 NAME		=	pipex
 
 TOOLS		=	end.c \
 				init_pipex.c \
 				init_input.c \
-				free_array.c
+				free_array.c \
+				heredoc.c
 
 # TODO set the files in alph order.
 
@@ -65,8 +66,12 @@ bin/%.o: src/%.c
 	@echo "${GREEN} [OK]${NC}"
 
 libft/libft.a:
-	@echo "- ${TITLE}Compiling${NC} Lift"
+	@echo "- ${TITLE}Compiling${NC} libft"
 	@make -C libft all
+
+gnl/gnl.a:
+	@echo "- ${TITLE}Compiling${NC} get_next_line"
+	@make -C gnl all
 
 clean:
 	@echo "${LRED}Cleaning ${NC}binaries\c"
@@ -74,6 +79,9 @@ clean:
 	@echo "${LGREEN} [OK]${NC}"
 	@echo "${LRED}Cleaning ${NC}libft"
 	@make fclean -C ./libft/
+	@echo "${LRED}Cleaning ${NC}get_next_line"
+	@make fclean -C ./gnl/
+
 
 fclean: clean
 	@echo "${LRED}Cleaning ${NC}$(NAME)\c"

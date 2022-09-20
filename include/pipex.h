@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 09:57:44 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/09/20 13:10:09 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/09/20 14:05:16 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@
 # include <sys/stat.h>
 
 # include "libft.h"
+# include "get_next_line.h"
+
 # include "pipex_msg.h"
 # include "pipex_structs.h"
 
@@ -58,11 +60,13 @@ void	end(int endtype, char *msg);
 // free_array.c
 void	free_array(char **array);
 
+// heredoc.c
+void	heredoc(char *argv, t_pipex *pipex);
+
 // void	close_pipe(int *fd);
 // void	close_pipes(t_pipex *p);
 // char	**get_path_array(char **envp);
 // char	*get_path(char *cmd_full, char **envp);
-// void	heredoc(char *argv, t_pipex *pipex);
 // void	init_output(t_pipex *pipex, char *path);
 // void	init_pipes(t_pipex *pipex);
 // char	*make_path(char *path, char *cmd);
