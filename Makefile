@@ -22,22 +22,10 @@ NAME		=	pipex
 
 TOOLS		=	end.c \
 				init_pipex.c \
-				init_input.c
-
-# TOOLS		=	close_pipe.c \
-				close_pipes.c \
-				end_error_file.c \
-				end.c \
-				free_array.c \
-				free_end.c \
-				get_path.c \
-				get_path_array.c \
-				heredoc.c \
 				init_input.c \
-				init_pipes.c \
-				init_pipex.c \
-				make_path.c \
-				use_pipe.c
+				free_array.c
+
+# TODO set the files in alph order.
 
 SRCS		=	${TOOLS:%=%} \
 				$(NAME).c

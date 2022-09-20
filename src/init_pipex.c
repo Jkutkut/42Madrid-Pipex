@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:50:54 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/09/20 12:16:46 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/09/20 12:40:54 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,18 @@
  */
 void	init_pipex(t_pipex *pipex, int argc, char **argv, char **envp)
 {
+	pipex->f_input = -1;
+	pipex->f_output = -1;
 	pipex->cmds = NULL;
 	pipex->envp = envp;
 	pipex->env_paths = NULL;
+	pipex->cmd_count = argc - 3 - pipex->heredoc;
+	pipex->cmd_idx = 0;
 	pipex->fds = NULL;
 	pipex->cmd_args = NULL;
 	pipex->cmd_full = NULL;
 	pipex->pid = NULL;
 	init_input(pipex, argv);
-	// pipex->cmd_count = argc - 3 - pipex->here_doc;
 	// pipex->fds = malloc(sizeof(int) * (pipex->cmd_count - 1) * 2);
 	// if (!pipex->fds)
 	// 	free_end(pipex, 1, ERROR_MALLOC);

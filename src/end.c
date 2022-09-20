@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 10:44:21 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/09/20 12:28:27 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/09/20 12:47:02 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,17 +42,17 @@ void	end_error_file(int type, t_pipex *pipex, char *file)
  */
 void	free_end(t_pipex *p, int endtype, char *msg)
 {
-	// if (p->f_input != -1)
-	// 	close(p->f_input);
-	// if (p->f_output != -1)
-	// 	close(p->f_output);
-	// if (p->env_paths)
-	// 	free_array(p->env_paths);
-	// if (p->fds)
-	// {
-	// 	close_pipes(p);
-	// 	free(p->fds);
-	// }
+	if (p->f_input != -1)
+		close(p->f_input);
+	if (p->f_output != -1)
+		close(p->f_output);
+	if (p->env_paths)
+		free_array(p->env_paths);
+	if (p->fds)
+	{
+		// close_pipes(p); // TODO
+		free(p->fds);
+	}
 	if (p->pid)
 		free(p->pid);
 	end(endtype, msg);
