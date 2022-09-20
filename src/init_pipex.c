@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:50:54 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/09/20 12:40:54 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/09/20 13:48:51 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,14 @@ void	init_pipex(t_pipex *pipex, int argc, char **argv, char **envp)
 	pipex->cmd_args = NULL;
 	pipex->cmd_full = NULL;
 	pipex->pid = NULL;
-	init_input(pipex, argv);
-	// pipex->fds = malloc(sizeof(int) * (pipex->cmd_count - 1) * 2);
-	// if (!pipex->fds)
-	// 	free_end(pipex, 1, ERROR_MALLOC);
-	// pipex->pid = malloc(sizeof(int) * pipex->cmd_count);
-	// if (!pipex->pid)
-	// 	free_end(pipex, 1, ERROR_MALLOC);
-	// pipex->cmds = argv + 2;
+	init_input(pipex, &argv);
+	pipex->fds = malloc(sizeof(int) * (pipex->cmd_count - 1) * 2);
+	if (!pipex->fds)
+		free_end(pipex, 1, ERROR_MALLOC);
+	pipex->pid = malloc(sizeof(int) * pipex->cmd_count);
+	if (!pipex->pid)
+		free_end(pipex, 1, ERROR_MALLOC);
+	pipex->cmds = argv + 2;
 	// pipex->env_paths = get_path_array(envp);
 	// if (!pipex->env_paths)
 	// {
