@@ -77,7 +77,7 @@ bin/%.o: src/%.c
 	@echo "${GREEN} [OK]${NC}"
 
 libft/libft.a:
-	# TODO
+	@echo "- ${TITLE}Compiling${NC} Lift"
 	@make -C libft all
 
 clean:
@@ -86,12 +86,11 @@ clean:
 	@echo "${LGREEN} [OK]${NC}"
 	@echo "${LRED}Cleaning ${NC}libft"
 	@make fclean -C ./libft/
-	@echo "Libft cleaned${LGREEN} [OK]${NC}"
 
 fclean: clean
 	@echo "${LRED}Cleaning ${NC}$(NAME)\c"
 	@rm -f $(NAME) $(BONUS_NAME)
-	@echo "${LGREEN} [OK]${NC}"
+	@echo "${LGREEN} [OK]${NC}\n"
 
 re: fclean all
 	@# make fclean
