@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 09:57:44 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/09/20 11:14:35 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/09/20 12:16:14 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@
 
 // Arguments parsing
 void	init_pipex(t_pipex *pipex, int argc, char **argv, char **envp);
-void	init_input(t_pipex *pipex, char ***argv);
+void	init_input(t_pipex *pipex, char **argv);
 
 
 // end.c

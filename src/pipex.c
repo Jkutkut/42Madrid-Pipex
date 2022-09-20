@@ -6,11 +6,36 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 17:15:28 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/09/19 15:50:36 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/09/20 12:14:26 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+// TODO norminette ft_
 #include "pipex.h"
+
+/**
+ * @brief Checks that the given arguments are valid.
+ * Also detects if heredoc present (1 if heredoc, 0 else).
+ * min cases:
+ *   no here_doc: pipex file.in cmd1 cmd2 outfile -> argc == 5
+ *      here_doc: pipex heredoc end cmd1 cmd2 outfile -> argc == 6
+ * @param argc Argc from the main function.
+ * @param argv Argv from the main function.
+ * @returns 1 if valid, 0 otherwise. 
+ */
+static int	ft_check_arg(int argc, char **argv, int *heredoc)
+{
+	if (argc < 5)
+		return (0);
+	*heredoc = 0;
+	if (!ft_strncmp(argv[1], HEREDOC, ft_strlen(HEREDOC)))
+	{
+		*heredoc = 1;
+		if (argc < 6)
+			return (0);
+	}
+	return (1);
+}
 
 /**
  * @brief Simulates the pipe command from linux.
@@ -25,7 +50,7 @@ int	main(int argc, char **argv, char **envp)
 	// int		result;
 	// int		idx;
 
-	if (argc < 5)
+	if (!ft_check_arg(argc, argv, &pipex.heredoc))
 	 	end(1, ERROR_ARGC);
 	init_pipex(&pipex, argc, argv, envp);
 	// while (++pipex.cmd_idx < pipex.cmd_count)

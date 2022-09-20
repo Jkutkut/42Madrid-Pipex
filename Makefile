@@ -10,7 +10,7 @@ TITLE		=	\033[38;5;33m
 
 # Compile variables
 CC			=	gcc
-FLAGS		=	-Wall -Wextra #-Werror
+FLAGS		=	-Wall -Wextra -Werror
 HEADERS		=	-I ./include -I ./libft/include/
 COMPILE		=	$(CC) $(FLAGS)
 
@@ -21,7 +21,8 @@ LIB			=	libft/libft.a
 NAME		=	pipex
 
 TOOLS		=	end.c \
-				init_pipex.c
+				init_pipex.c \
+				init_input.c
 
 # TOOLS		=	close_pipe.c \
 				close_pipes.c \

@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:50:54 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/09/20 11:22:07 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/09/20 12:16:46 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,5 @@ void	init_pipex(t_pipex *pipex, int argc, char **argv, char **envp)
 	// }
 	// init_output(pipex, argv[argc - 1 - pipex->here_doc]);
 	// init_pipes(pipex);
+	argc++;
 }
