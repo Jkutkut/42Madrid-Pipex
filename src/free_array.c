@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 22:02:23 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/09/20 12:42:56 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/09/21 09:47:45 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
  * 
  * @param array The array to free.
  */
-void	free_array(char **array)
+void	ft_free_array(char **array)
 {
 	int	i;
 

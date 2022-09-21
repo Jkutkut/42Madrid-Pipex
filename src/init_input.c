@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 21:38:04 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/09/20 14:01:38 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/09/21 09:51:29 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,17 @@
  * @param pipex Structure that contains the pipex info.
  * @param argv Command line arguments.
  */
-void	init_input(t_pipex *pipex, char ***argv)
+void	ft_init_input(t_pipex *pipex, char ***argv)
 {
 	if (pipex->heredoc)
 	{
-		heredoc((*argv)[2], pipex);
+		ft_heredoc((*argv)[2], pipex);
 		(*argv)++;
 	}
 	else
 	{
 		pipex->f_input = open((*argv)[1], O_RDONLY);
 		if (pipex->f_input == -1)
-			end_error_file(0, pipex, (*argv)[1]);
+			ft_end_error_file(0, pipex, (*argv)[1]);
 	}
 }

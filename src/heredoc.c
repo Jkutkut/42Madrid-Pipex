@@ -6,13 +6,13 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 16:44:16 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/09/20 18:53:13 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/09/21 16:32:19 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-static int	isdelimeter(char *delimeter, char *buf)
+static int	ft_isdelimeter(char *delimeter, char *buf)
 {
 	int	delim_len;
 	int	buf_len;
@@ -28,7 +28,7 @@ static int	isdelimeter(char *delimeter, char *buf)
 	return (1);
 }
 
-static void	get_heredoc(char *delim, t_pipex *pipex, int f)
+static void	ft_get_heredoc(char *delim, t_pipex *pipex, int f)
 {
 	char	*buf;
 
@@ -37,8 +37,8 @@ static void	get_heredoc(char *delim, t_pipex *pipex, int f)
 		write(1, HEREDOC_SHELL, 9);
 		buf = get_next_line(STDIN);
 		if (!buf)
-			free_end(pipex, 1, ERROR_HEREDOC);
-		if (isdelimeter(delim, buf))
+			ft_free_end(pipex, 1, ERROR_HEREDOC);
+		if (ft_isdelimeter(delim, buf))
 			break ;
 		ft_putendl_fd(buf, f);
 		free(buf);
@@ -46,16 +46,16 @@ static void	get_heredoc(char *delim, t_pipex *pipex, int f)
 	free(buf);
 }
 
-void	heredoc(char *delim, t_pipex *pipex)
+void	ft_heredoc(char *delim, t_pipex *pipex)
 {
 	int		f;
 
 	f = open(HEREDOC_FILE, O_CREAT | O_WRONLY | O_TRUNC, 0000644);
 	if (f <= 0)
-		free_end(pipex, 1, ERROR_HEREDOC);
-	get_heredoc(delim, pipex, f);
+		ft_free_end(pipex, 1, ERROR_HEREDOC);
+	ft_get_heredoc(delim, pipex, f);
 	close(f);
 	pipex->f_input = open(HEREDOC_FILE, O_RDONLY);
 	if (pipex->f_input == -1)
-		free_end(pipex, 1, ERROR_HEREDOC);
+		ft_free_end(pipex, 1, ERROR_HEREDOC);
 }

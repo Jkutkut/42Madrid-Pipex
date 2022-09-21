@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 21:18:55 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/09/21 09:16:21 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/09/21 09:52:13 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,18 @@
  * 
  * @param pipex Structure that contains will contain the pipes.
  */
-void	init_pipes(t_pipex *pipex)
+void	ft_init_pipes(t_pipex *pipex)
 {
 	int	i;
 
 	pipex->fds = malloc(sizeof(int) * (pipex->cmd_count - 1) * 2);
 	if (!pipex->fds)
-		free_end(pipex, 1, ERROR_MALLOC);
+		ft_free_end(pipex, 1, ERROR_MALLOC);
 	i = 0;
 	while (i < pipex->cmd_count - 1)
 	{
 		if (pipe(&(pipex->fds[2 * i])) != 0)
-			free_end(pipex, 1, ERROR_PIPE_INIT);
+			ft_free_end(pipex, 1, ERROR_PIPE_INIT);
 		i++;
 	}
 }
