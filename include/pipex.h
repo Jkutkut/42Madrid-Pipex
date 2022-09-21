@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 09:57:44 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/09/20 14:05:16 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/09/21 08:51:57 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,26 @@
 # define HEREDOC_FILE ".heredoc.tmp"
 # define HEREDOC_SHELL "heredoc> "
 
-/***************************************/
+/********************************/
 
-// Arguments parsing
+/****** Arguments parsing  ******/
+// init_pipex.c
 void	init_pipex(t_pipex *pipex, int argc, char **argv, char **envp);
+
+// init_input.c
 void	init_input(t_pipex *pipex, char ***argv);
 
+// init_output.c
+void	init_output(t_pipex *pipex, char *path);
+
+// heredoc.c
+void	heredoc(char *argv, t_pipex *pipex);
+
+// get_path_array
+char	**get_path_array(char **envp);
+
+
+/****** END LOGIC ******/
 // end.c
 void	end_error_file(int type, t_pipex *pipex, char *file);
 void	free_end(t_pipex *p, int endtype, char *msg);
@@ -60,14 +74,9 @@ void	end(int endtype, char *msg);
 // free_array.c
 void	free_array(char **array);
 
-// heredoc.c
-void	heredoc(char *argv, t_pipex *pipex);
-
 // void	close_pipe(int *fd);
 // void	close_pipes(t_pipex *p);
-// char	**get_path_array(char **envp);
 // char	*get_path(char *cmd_full, char **envp);
-// void	init_output(t_pipex *pipex, char *path);
 // void	init_pipes(t_pipex *pipex);
 // char	*make_path(char *path, char *cmd);
 // void	use_pipe(int *fd_in, int *fd_out);

@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:50:54 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/09/20 13:48:51 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/09/21 08:44:06 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,15 +38,15 @@ void	init_pipex(t_pipex *pipex, int argc, char **argv, char **envp)
 	if (!pipex->pid)
 		free_end(pipex, 1, ERROR_MALLOC);
 	pipex->cmds = argv + 2;
-	// pipex->env_paths = get_path_array(envp);
-	// if (!pipex->env_paths)
-	// {
-	// 	pipex->env_paths = malloc(sizeof(char *));
-	// 	if (!pipex->env_paths)
-	// 		end(1, ERROR_MALLOC);
-	// 	pipex->env_paths[0] = NULL;
-	// }
-	// init_output(pipex, argv[argc - 1 - pipex->here_doc]);
+	pipex->env_paths = get_path_array(envp);
+	if (!pipex->env_paths)
+	{
+		pipex->env_paths = malloc(sizeof(char *));
+		if (!pipex->env_paths)
+			free_end(pipex, 1, ERROR_MALLOC);
+		pipex->env_paths[0] = NULL;
+	}
+	init_output(pipex, argv[argc - 1]);
 	// init_pipes(pipex);
 	argc++;
 }

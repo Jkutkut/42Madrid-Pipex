@@ -20,16 +20,13 @@ LIB			=	libft/libft.a gnl/gnl.a
 
 NAME		=	pipex
 
-TOOLS		=	end.c \
-				init_pipex.c \
-				init_input.c \
-				free_array.c \
-				heredoc.c
+TOOLS		=	$(wildcard src/*.c)
 
 # TODO set the files in alph order.
 
-SRCS		=	${TOOLS:%=%} \
-				$(NAME).c
+#SRCS		=	${TOOLS:%=%}
+SRCS		=	${TOOLS:src/%=%} \
+				#$(NAME).c
 
 OBJS		=	${SRCS:%.c=bin/%.o}
 
