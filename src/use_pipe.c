@@ -1,34 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_pipes.c                                       :+:      :+:    :+:   */
+/*   use_pipe.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/30 21:18:55 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/09/22 09:20:55 by jre-gonz         ###   ########.fr       */
+/*   Created: 2022/04/23 13:41:16 by jre-gonz          #+#    #+#             */
+/*   Updated: 2022/09/22 09:02:02 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
 /**
- * @brief Creates the pipes need to communicate the processes.
+ * @brief Set's the given arguments as file descriptors of stdin and stdout.
+ * Closes the given file descriptors.
  * 
- * @param pipex Structure that contains will contain the pipes.
+ * @param fd_in File descriptor of stdin.
+ * @param fd_out File descriptor of stdout.
  */
-void	ft_init_pipes(t_pipex *pipex)
+void	use_pipe(int *fd_in, int *fd_out)
 {
-	int	i;
-
-	pipex->fds = malloc(sizeof(int) * (pipex->cmd_count - 1) * 2);
-	if (!pipex->fds)
-		ft_free_end(pipex, 1, ERROR_MALLOC);
-	i = 0;
-	while (i < pipex->cmd_count - 1)
-	{
-		if (pipe(&(pipex->fds[2 * i++])) != 0)
-			ft_free_end(pipex, 1, ERROR_PIPE_INIT);
-		i++;
-	}
+	dup2(*fd_in, STDIN);
+	dup2(*fd_out, STDOUT);
+	close_pipe(fd_in);
+	close_pipe(fd_out);
 }
