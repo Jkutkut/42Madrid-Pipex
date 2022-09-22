@@ -1,28 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   use_pipe.c                                         :+:      :+:    :+:   */
+/*   close_fds.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/23 13:41:16 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/09/22 09:33:23 by jre-gonz         ###   ########.fr       */
+/*   Created: 2022/04/23 19:11:37 by jre-gonz          #+#    #+#             */
+/*   Updated: 2022/09/22 09:31:54 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
 /**
- * @brief Set's the given arguments as file descriptors of stdin and stdout.
- * Closes the given file descriptors.
- * 
- * @param fd_in File descriptor of stdin.
- * @param fd_out File descriptor of stdout.
+ * @brief Closes all the file descriptors in the pipex program.
+ *
+ * @param p pipex structure with all the file descriptors.
  */
-void	use_pipe(int *fd_in, int *fd_out)
+void	ft_close_fds(t_pipex *p)
 {
-	dup2(*fd_in, STDIN);
-	dup2(*fd_out, STDOUT);
-	ft_close_fd(fd_in);
-	ft_close_fd(fd_out);
+	int	i;
+
+	i = 0;
+	while (i < p->cmd_count - 1)
+	{
+		ft_close_fd(&p->fds[2 * i]);
+		ft_close_fd(&p->fds[2 * i + 1]);
+		i++;
+	}
+	ft_close_fd(&p->f_input);
+	ft_close_fd(&p->f_output);
 }

@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 09:57:44 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/09/21 09:41:59 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/09/22 09:25:36 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,15 @@ void	ft_end(int endtype, char *msg);
 // free_array.c
 void	ft_free_array(char **array);
 
-// void	ft_close_pipe(int *fd);
-// void	ft_close_pipes(t_pipex *p);
+// close_fds.c
+void	ft_close_fds(t_pipex *p);
+
+// close_fd.c
+void	ft_close_fd(int *fd);
+
+/****** EXECUTION LOGIC ******/
+int		ft_exe_cmd(t_pipex *p);
+
 // char	*ft_get_path(char *cmd_full, char **envp);
 // char	*ft_make_path(char *path, char *cmd);
 // void	ft_use_pipe(int *fd_in, int *fd_out);
