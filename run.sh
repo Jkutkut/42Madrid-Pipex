@@ -9,6 +9,18 @@ echo "./pipex $inputFile \"cat -e\" \"wc -l\" $outputFile"
 # echo "./pipex here_doc end \"grep a\" cat cat cat cat \"wc -l\" $outputFile"
 
 echo "----------------";
+
+
+# valgrind --leak-check=full \
+#          --show-leak-kinds=all \
+#          --track-origins=yes \
+#          --verbose \
+#          --log-file=valgrind-out.txt \
+#          ./executable exampleParam1
+
+valgrind --leak-check=full \
+         --show-leak-kinds=all \
+         --track-origins=yes \
 ./pipex $inputFile "cat -e" "wc -l" $outputFile &&
 # ./pipex here_doc end "grep a" "wc -l" $outputFile &&
 # ./pipex $inputFile "cat -e" "grep Wall" "wc -l" $outputFile &&

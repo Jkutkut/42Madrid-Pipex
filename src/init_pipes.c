@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 21:18:55 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/09/22 09:20:55 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/10/13 18:32:33 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,14 @@
 
 /**
  * @brief Creates the pipes need to communicate the processes.
+ *
+ * Keep in mind the amount of of pipes are num(cmd) - 1.
+ * 2 fds per pipe.
+ *
+ * mandatory: input fd1.in fd1.out out
  * 
+ * bonus(3): input fd1.in fd1.out fd2.in fd2.out out
+ *
  * @param pipex Structure that contains will contain the pipes.
  */
 void	ft_init_pipes(t_pipex *pipex)
@@ -27,7 +34,7 @@ void	ft_init_pipes(t_pipex *pipex)
 	i = 0;
 	while (i < pipex->cmd_count - 1)
 	{
-		if (pipe(&(pipex->fds[2 * i++])) != 0)
+		if (pipe(&(pipex->fds[2 * i])) != 0)
 			ft_free_end(pipex, 1, ERROR_PIPE_INIT);
 		i++;
 	}

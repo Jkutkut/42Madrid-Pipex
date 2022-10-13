@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 10:44:21 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/09/21 09:47:33 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/10/13 18:44:59 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	ft_end_error_file(int type, t_pipex *pipex, char *file)
  * @param endtype The exit code.
  * @param msg The message to print if given.
  */
-void	ft_free_end(t_pipex *p, int endtype, char *msg)
+int	ft_free_end(t_pipex *p, int endtype, char *msg)
 {
 	if (p->f_input != -1)
 		close(p->f_input);
@@ -50,14 +50,14 @@ void	ft_free_end(t_pipex *p, int endtype, char *msg)
 		ft_free_array(p->env_paths);
 	if (p->fds)
 	{
-		// close_pipes(p); // TODO
+		ft_close_fds(p);
 		free(p->fds);
 	}
 	if (p->pid)
 		free(p->pid);
 	if (p->heredoc)
 		unlink(HEREDOC_FILE);
-	ft_end(endtype, msg);
+	return (ft_end(endtype, msg));
 }
 
 /**
@@ -66,7 +66,7 @@ void	ft_free_end(t_pipex *p, int endtype, char *msg)
  * @param endtype Type of end (0: normal, 1: error)
  * @param msg Message to display if error.
  */
-void	ft_end(int endtype, char *msg)
+int	ft_end(int endtype, char *msg)
 {
 	if (msg != NULL)
 	{
@@ -74,4 +74,5 @@ void	ft_end(int endtype, char *msg)
 		ft_putstr_fd(msg, STDERROR);
 	}
 	exit(endtype);
+	return (endtype);
 }

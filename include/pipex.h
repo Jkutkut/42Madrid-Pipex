@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 09:57:44 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/10/13 13:39:46 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/10/13 18:10:39 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,8 @@ char	**ft_get_path_array(char **envp);
 /****** END LOGIC ******/
 // end.c
 void	ft_end_error_file(int type, t_pipex *pipex, char *file);
-void	ft_free_end(t_pipex *p, int endtype, char *msg);
-void	ft_end(int endtype, char *msg);
+int		ft_free_end(t_pipex *p, int endtype, char *msg);
+int		ft_end(int endtype, char *msg);
 
 // free_array.c
 void	ft_free_array(char **array);
