@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 17:15:28 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/10/13 13:13:26 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/10/13 16:36:44 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,11 +62,16 @@ int	main(int argc, char **argv, char **envp)
 		pipex.cmd_idx++;
 	}
 	// idx = 0;
-	// while (idx++ < pipex.cmd_count - 1)
+	// while (idx < pipex.cmd_count - 1) {
 	// 	waitpid(pipex.pid[idx], NULL, 0);
+	// 	idx++;
+	// }
 	// waitpid(pipex.pid[idx], &result, 0);
+	// waitpid(-1, &result, 0);
+	waitpid(-1, NULL, 0);
+	ft_close_fds(&pipex);
 	// if (wifexited(result))
 	// 	free_end(&pipex, wexitstatus(result), NULL);
-	// free_end(&pipex, EXIT_SUCCESS, NULL);
+	ft_free_end(&pipex, EXIT_SUCCESS, NULL);
 	return (EXIT_SUCCESS);
 }
