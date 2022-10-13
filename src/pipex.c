@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 17:15:28 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/10/13 22:32:10 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/10/13 22:33:54 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,15 +54,15 @@ int	main(int argc, char **argv, char **envp)
 	 	ft_end(1, ERROR_ARGC);
 	ft_init_pipex(&pipex, argc, argv, envp);
 	
-	ft_putnbr_fd(pipex.cmd_count, 2);
-	ft_putendl_fd(" is the cmd_count\n", 2);
-	
-	ft_putendl_fd("Pipes:\n", 2);
-	for (int i = 0; i < (pipex.cmd_count - 1) * 2; i++) {
-		ft_putnbr_fd(pipex.fds[i], 2);
-		ft_putstr_fd(", ", 2);
-	}
-	ft_putendl_fd("\n", 2);
+	// ft_putnbr_fd(pipex.cmd_count, 2);
+	// ft_putendl_fd(" is the cmd_count\n", 2);
+	// 
+	// ft_putendl_fd("Pipes:\n", 2);
+	// for (int i = 0; i < (pipex.cmd_count - 1) * 2; i++) {
+	// 	ft_putnbr_fd(pipex.fds[i], 2);
+	// 	ft_putstr_fd(", ", 2);
+	// }
+	// ft_putendl_fd("\n", 2);
 	
 	while (pipex.cmd_idx < pipex.cmd_count) {
 	 	pipex.pid[pipex.cmd_idx] = ft_exe_cmd(&pipex);

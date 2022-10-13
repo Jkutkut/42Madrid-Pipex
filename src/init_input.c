@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 21:38:04 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/10/13 13:44:23 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/10/13 22:34:57 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,14 @@ void	ft_init_input(t_pipex *pipex, char ***argv)
 	{
 		// TODO not working
 		// ./pipex here_doc end "grep a" cat cat cat cat "wc -l" result.txt
-		ft_putstr_fd("Heredoc used\n", 2);
+		// ft_putstr_fd("Heredoc used\n", 2);
 		ft_heredoc((*argv)[2], pipex);
 		(*argv)++;
 		pipex->cmd_count--;
 	}
 	else
 	{
-		ft_putstr_fd("File used\n", 2);
+		// ft_putstr_fd("File used\n", 2);
 		pipex->f_input = open((*argv)[1], O_RDONLY);
 		if (pipex->f_input == -1)
 			ft_end_error_file(0, pipex, (*argv)[1]);

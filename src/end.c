@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 10:44:21 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/10/13 18:44:59 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/10/13 22:46:30 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,10 @@ void	ft_end_error_file(int type, t_pipex *pipex, char *file)
  */
 int	ft_free_end(t_pipex *p, int endtype, char *msg)
 {
+	if (p->cmd_full)
+		free(p->cmd_full);// TODO find correct place
+	if (p->cmd_args)
+		ft_free_array(p->cmd_args);// TODO find correct place
 	if (p->f_input != -1)
 		close(p->f_input);
 	if (p->f_output != -1)
