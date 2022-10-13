@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 17:15:28 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/10/13 18:38:39 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/10/13 22:32:10 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int	main(int argc, char **argv, char **envp)
 	ft_putendl_fd(" is the cmd_count\n", 2);
 	
 	ft_putendl_fd("Pipes:\n", 2);
-	for (int i = 0; i < 6; i++) {
+	for (int i = 0; i < (pipex.cmd_count - 1) * 2; i++) {
 		ft_putnbr_fd(pipex.fds[i], 2);
 		ft_putstr_fd(", ", 2);
 	}

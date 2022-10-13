@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 09:33:44 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/09/21 09:32:34 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/10/13 20:32:39 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,9 @@ typedef struct s_pipex
 	 * @brief Array with the cmds (argv)
 	 */
 	char	**cmds;
+
+
+	char	**envp; // TODO document and add to reduced
 	/**
 	 * @brief Array with the path array.
 	 * Result of processing envp

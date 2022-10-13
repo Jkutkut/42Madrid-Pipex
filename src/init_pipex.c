@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:50:54 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/10/13 13:09:57 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/10/13 20:35:50 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ static void	ft_init_structure(t_pipex *pipex, int cmd_count)
  */
 void	ft_init_pipex(t_pipex *pipex, int argc, char **argv, char **envp)
 {
+	pipex->envp = envp;
 	ft_init_structure(pipex, argc - 3);
 	ft_init_input(pipex, &argv);
 	ft_init_pipes(pipex);

@@ -21,7 +21,8 @@ echo "----------------";
 valgrind --leak-check=full \
          --show-leak-kinds=all \
          --track-origins=yes \
-./pipex $inputFile "cat -e" "wc -l" $outputFile &&
+./pipex $inputFile "cat -e" "hostname" $outputFile &&
+# ./pipex $inputFile "cat -e" "wc -l" $outputFile &&
 # ./pipex here_doc end "grep a" "wc -l" $outputFile &&
 # ./pipex $inputFile "cat -e" "grep Wall" "wc -l" $outputFile &&
 {
