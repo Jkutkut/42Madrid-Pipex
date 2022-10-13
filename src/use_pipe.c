@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 13:41:16 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/09/22 09:33:23 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/10/11 08:21:35 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
  * @param fd_in File descriptor of stdin.
  * @param fd_out File descriptor of stdout.
  */
-void	use_pipe(int *fd_in, int *fd_out)
+void	ft_use_pipe(int *fd_in, int *fd_out)
 {
 	dup2(*fd_in, STDIN);
 	dup2(*fd_out, STDOUT);

@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 09:57:44 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/09/22 09:25:36 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/10/11 13:24:18 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,10 +84,16 @@ void	ft_close_fds(t_pipex *p);
 void	ft_close_fd(int *fd);
 
 /****** EXECUTION LOGIC ******/
+// exe_cmd.c
 int		ft_exe_cmd(t_pipex *p);
 
-// char	*ft_get_path(char *cmd_full, char **envp);
-// char	*ft_make_path(char *path, char *cmd);
-// void	ft_use_pipe(int *fd_in, int *fd_out);
+// use_pipe.c
+void	ft_use_pipe(int *fd_in, int *fd_out);
+
+// get_path.c
+char	*ft_get_path(char *cmd_full, char **envp);
+
+// make_path.c
+char	*ft_make_path(char *path, char *cmd);
 
 #endif
