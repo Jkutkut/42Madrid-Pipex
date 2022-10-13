@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 17:15:28 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/09/22 09:32:42 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/10/13 13:13:26 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,14 @@ int	main(int argc, char **argv, char **envp)
 	if (!ft_check_arg(argc, argv, &pipex.heredoc))
 	 	ft_end(1, ERROR_ARGC);
 	ft_init_pipex(&pipex, argc, argv, envp);
-	while (pipex.cmd_idx < pipex.cmd_count)
-	 	pipex.pid[pipex.cmd_idx++] = ft_exe_cmd(&pipex);
+	
+	ft_putnbr_fd(pipex.cmd_count, 2);
+	ft_putendl_fd(" is the cmd_count\n", 2);
+	
+	while (pipex.cmd_idx < pipex.cmd_count) {
+	 	pipex.pid[pipex.cmd_idx] = ft_exe_cmd(&pipex);
+		pipex.cmd_idx++;
+	}
 	// idx = 0;
 	// while (idx++ < pipex.cmd_count - 1)
 	// 	waitpid(pipex.pid[idx], NULL, 0);
