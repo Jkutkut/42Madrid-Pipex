@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 09:57:44 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/10/11 13:24:18 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/10/13 13:39:46 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@
 # define PIPE_WRITE 1
 
 // heredoc
-# define HEREDOC "heredoc"
+# define HEREDOC "here_doc"
 # define HEREDOC_FILE ".heredoc.tmp"
 # define HEREDOC_SHELL "heredoc> "
 

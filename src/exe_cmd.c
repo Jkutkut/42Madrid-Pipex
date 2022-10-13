@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 17:18:21 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/10/13 13:14:24 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/10/13 13:34:28 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	ft_exe_cmd(t_pipex *p)
 	ft_putstr_fd(" <--\n", 2); // TODO debug
 	if (!p->cmd_full)
 		ft_free_end(p, ERROR_CNF_CODE, ERROR_CNF);
-	// if (execve(p->cmd_full, p->cmd_args, p->envp) == -1)
-	ft_free_end(p, 1, ERROR_EXE_CMD);
+	if (execve(p->cmd_full, p->cmd_args, p->env_paths) == -1)
+		ft_free_end(p, 1, ERROR_EXE_CMD);
 	return (-1); // TODO Check if this is ok. This line should never be executed.
 }
