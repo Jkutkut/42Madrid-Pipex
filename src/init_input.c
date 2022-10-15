@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 21:38:04 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/10/13 22:34:57 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/10/14 13:05:58 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,15 @@
  * @param pipex Structure that contains the pipex info.
  * @param argv Command line arguments.
  */
-void	ft_init_input(t_pipex *pipex, char ***argv)
+void	ft_init_input(t_pipex *pipex, int *argc, char ***argv)
 {
 	pipex->heredoc = ft_strncmp((*argv)[1], HEREDOC, ft_strlen(HEREDOC)) == 0;
 	if (pipex->heredoc)
 	{
-		// TODO not working
-		// ./pipex here_doc end "grep a" cat cat cat cat "wc -l" result.txt
 		// ft_putstr_fd("Heredoc used\n", 2);
 		ft_heredoc((*argv)[2], pipex);
 		(*argv)++;
+		*argc = *argc - 1;
 		pipex->cmd_count--;
 	}
 	else

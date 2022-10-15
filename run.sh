@@ -18,9 +18,9 @@ echo "----------------";
 #          --log-file=valgrind-out.txt \
 #          ./executable exampleParam1
 
-valgrind --leak-check=full \
-         --show-leak-kinds=all \
-         --track-origins=yes \
+# valgrind --leak-check=full \
+#          --show-leak-kinds=all \
+#          --track-origins=yes \
 ./pipex $inputFile "notexisting" "wc" $outputFile &&
 # ./pipex $inputFile "cat -e" "hostname" $outputFile &&
 # ./pipex $inputFile "cat -e" "wc -l" $outputFile &&
@@ -47,5 +47,5 @@ if [ -f $outputFile ]; then
 else
 	echo "Output file does not exist!"
 fi
-
+echo "\n\nExit status: $?\n\n"
 ps -lf

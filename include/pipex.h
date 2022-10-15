@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 09:57:44 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/10/13 18:10:39 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/10/14 13:02:59 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@
 void	ft_init_pipex(t_pipex *pipex, int argc, char **argv, char **envp);
 
 // init_input.c
-void	ft_init_input(t_pipex *pipex, char ***argv);
+void	ft_init_input(t_pipex *pipex, int *argc, char ***argv);
 
 // init_pipes.c
 void	ft_init_pipes(t_pipex *pipex);
