@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 09:57:44 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/10/14 13:02:59 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/10/17 15:19:08 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,9 @@
 /********************************/
 
 /****** Arguments parsing  ******/
+// check_arg.c
+int	ft_check_arg(int argc, char **argv, int *heredoc);
+
 // init_pipex.c
 void	ft_init_pipex(t_pipex *pipex, int argc, char **argv, char **envp);
 
