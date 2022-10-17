@@ -10,7 +10,8 @@ TITLE		=	\033[38;5;33m
 
 # Compile variables
 CC			=	gcc
-FLAGS		=	-Wall -Wextra -Werror -g -fsanitize=address # TODO remove sanitize
+FLAGS		=	-Wall -Wextra # -Werror # TODO
+# FLAGS		=	-Wall -Wextra -Werror -g -fsanitize=address # TODO remove sanitize
 HEADERS		=	-I ./include -I ./libft/include/ -I ./gnl/include/
 COMPILE		=	$(CC) $(FLAGS)
 

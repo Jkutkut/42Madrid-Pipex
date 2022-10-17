@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 10:44:21 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/10/17 15:26:36 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/10/17 19:15:10 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,6 @@ int	ft_free_end(t_pipex *p, int endtype, char *msg)
 		ft_close_fds(p);
 		free(p->fds);
 	}
-	if (p->cmd_args)
-		ft_free_array(p->cmd_args);
 	if (p->cmd_full)
 		free(p->cmd_full);
 	if (p->heredoc)

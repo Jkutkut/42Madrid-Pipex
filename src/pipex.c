@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 17:15:28 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/10/17 15:21:11 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/10/17 19:20:31 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,7 @@ int	main(int argc, char **argv, char **envp)
 		pipex.cmd_idx++;
 	}
 	waitpid(-1, &result, 0);
+	// system("ps -l"); // TODO check all processes have ended
+	// TODO WEXITSTATUS
 	return (ft_free_end(&pipex, WEXITSTATUS(result), NULL));
 }
