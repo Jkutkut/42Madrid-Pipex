@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 17:15:28 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/10/17 19:20:31 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/10/17 20:05:24 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,15 @@ int	main(int argc, char **argv, char **envp)
 		pipex.pid[pipex.cmd_idx] = ft_exe_cmd(&pipex);
 		pipex.cmd_idx++;
 	}
-	waitpid(-1, &result, 0);
+	ft_close_fds(&pipex);
+	pipex.cmd_idx = 0;
+	int status;
+	pid_t waited_pid;
+	while (pipex.cmd_idx < pipex.cmd_count) {
+		waited_pid = waitpid(pipex.pid[pipex.cmd_idx++], &status, 0);
+		if (waited_pid == pipex.pid[pipex.cmd_count - 1])
+			result = status;
+	}
 	// system("ps -l"); // TODO check all processes have ended
 	// TODO WEXITSTATUS
 	return (ft_free_end(&pipex, WEXITSTATUS(result), NULL));
