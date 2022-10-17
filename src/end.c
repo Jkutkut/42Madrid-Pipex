@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 10:44:21 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/10/14 13:00:16 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/10/17 15:06:13 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ void	ft_end_error_file(int type, t_pipex *pipex, char *file)
 		ft_memmove(error_msg, "Not able to open: ", 19);
 	ft_putendl_fd(error_msg, 2);
 	ft_putendl_fd(file, 2);
-	ft_strlcat(error_msg, file, ft_strlen(error_msg) + ft_strlen(file));
-	//ft_strlcat(error_msg, file, ft_strlen(error_msg) + ft_strlen(file) + 1);
+	ft_strlcat(error_msg, file, ft_strlen(error_msg) + ft_strlen(file) + 1);
+	ft_strlcat(error_msg, "\n", ft_strlen(error_msg) + 2);
 	ft_free_end(pipex, 1, error_msg);
 }
 
