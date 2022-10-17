@@ -21,7 +21,8 @@ echo "----------------";
 # valgrind --leak-check=full \
 #          --show-leak-kinds=all \
 #          --track-origins=yes \
-./pipex $inputFile "notexisting" "wc" $outputFile &&
+./pipex Makefile "pipex Makefile cat wc r.txt" cat result.txt &&
+# ./pipex $inputFile "notexisting" "wc" $outputFile &&
 # ./pipex $inputFile "cat -e" "hostname" $outputFile &&
 # ./pipex $inputFile "cat -e" "wc -l" $outputFile &&
 # ./pipex here_doc end "grep a" "wc -l" $outputFile &&
