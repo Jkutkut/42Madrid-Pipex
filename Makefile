@@ -10,8 +10,8 @@ TITLE		=	\033[38;5;33m
 
 # Compile variables
 CC			=	gcc
-FLAGS		=	-Wall -Wextra # -Werror # TODO
-# FLAGS		=	-Wall -Wextra -Werror -g -fsanitize=address # TODO remove sanitize
+FLAGS		=	-Wall -Wextra -Werror
+# FLAGS		=	-Wall -Wextra -Werror -g -fsanitize=address
 HEADERS		=	-I ./include -I ./libft/include/ -I ./gnl/include/
 COMPILE		=	$(CC) $(FLAGS)
 
@@ -21,9 +21,23 @@ LIB			=	libft/libft.a gnl/gnl.a
 
 NAME		=	pipex
 
-TOOLS		=	$(wildcard src/*.c)
-
-# TODO set the files in alph order.
+TOOLS		=	check_arg.c \
+				close_fd.c \
+				close_fds.c \
+				end.c \
+				exe_cmd.c \
+				free_array.c \
+				get_path.c \
+				get_path_array.c \
+				heredoc.c \
+				init_input.c \
+				init_output.c \
+				init_pipes.c \
+				init_pipex.c \
+				make_path.c \
+				pipex.c \
+				use_pipe.c \
+				waitpids.c
 
 #SRCS		=	${TOOLS:%=%}
 SRCS		=	${TOOLS:src/%=%} \
