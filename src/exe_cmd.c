@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 17:18:21 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/10/17 17:18:24 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/10/18 17:13:53 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,6 @@ int	ft_exe_cmd(t_pipex *p)
 	p->cmd_full = ft_get_path(p->cmd_args[0], p->env_paths);
 	if (!p->cmd_full)
 		ft_free_end(p, ERROR_CNF_CODE, ERROR_CNF);
-	if (execve(p->cmd_full, p->cmd_args, p->envp) == -1)
-		return (ft_free_end(p, 1, ERROR_EXE_CMD));
-	ft_putendl_fd("\n\n\n\n\n\nHey!!!!\n\n\n\n\n\n\n", 2);
+	execve(p->cmd_full, p->cmd_args, p->envp);
 	return (ft_free_end(p, 1, ERROR_EXE_CMD));
 }
