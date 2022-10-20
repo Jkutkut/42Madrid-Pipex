@@ -12,12 +12,12 @@ TITLE		=	\033[38;5;33m
 CC			=	gcc
 FLAGS		=	-Wall -Wextra -Werror
 # FLAGS		=	-Wall -Wextra -Werror -g -fsanitize=address
-HEADERS		=	-I ./include -I ./libft/include/ -I ./gnl/include/
+HEADERS		=	-I ./include -I ./libft/include
 COMPILE		=	$(CC) $(FLAGS)
 
 # Code variables
 
-LIB			=	libft/libft.a gnl/gnl.a
+LIB			=	libft/libft.a
 
 NAME		=	pipex
 
@@ -26,7 +26,6 @@ TOOLS		=	check_arg.c \
 				close_fds.c \
 				end.c \
 				exe_cmd.c \
-				free_array.c \
 				get_path.c \
 				get_path_array.c \
 				heredoc.c \
@@ -66,7 +65,7 @@ debug: FLAGS += -fsanitize=address -g3
 endif
 debug: $(NAME)
 
-$(NAME):	$(OBJS) $(LIB)
+$(NAME):	$(LIB) $(OBJS)
 	@echo "\n${TITLE}Compiling ${YELLOW}$(NAME)${NC}\c"
 	@$(COMPILE) $(OBJS) $(HEADERS) $(LIB) -o $(NAME)
 	@echo "${LGREEN} [OK]${NC}\n"
@@ -81,18 +80,12 @@ libft/libft.a:
 	@echo "- ${TITLE}Compiling${NC} libft"
 	@make -C libft all
 
-gnl/gnl.a:
-	@echo "- ${TITLE}Compiling${NC} get_next_line"
-	@make -C gnl all
-
 clean:
 	@echo "${LRED}Cleaning ${NC}binaries\c"
 	@rm -rf bin
 	@echo "${LGREEN} [OK]${NC}"
 	@echo "${LRED}Cleaning ${NC}libft"
 	@make fclean -C ./libft/
-	@echo "${LRED}Cleaning ${NC}get_next_line"
-	@make fclean -C ./gnl/
 
 
 fclean: clean

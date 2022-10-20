@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 09:57:44 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/10/17 20:16:16 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/10/20 09:16:10 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@
 # include <sys/stat.h>
 
 # include "libft.h"
-# include "get_next_line.h"
 
 # include "pipex_msg.h"
 # include "pipex_structs.h"
@@ -75,9 +74,6 @@ char	**ft_get_path_array(char **envp);
 void	ft_end_error_file(int type, t_pipex *pipex, char *file);
 int		ft_free_end(t_pipex *p, int endtype, char *msg);
 int		ft_end(int endtype, char *msg);
-
-// free_array.c
-void	ft_free_array(char **array);
 
 // close_fds.c
 void	ft_close_fds(t_pipex *p);
