@@ -1,3 +1,6 @@
+#!/bin/zsh
+
+# Script to check what's going on with a process
 
 echo "Enter pid of pipex:"
 read pid
