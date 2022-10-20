@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 17:18:21 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/10/18 17:13:53 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/10/20 10:00:05 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
  *  Note2: Pipes use the order given by the pipe cmd. This means:
  *  	pipefd[0] refers to the read end of the pipe.
  *  	pipefd[1] refers to the write end of the pipe.
+ *  @param p TODO
  */
 int	ft_exe_cmd(t_pipex *p)
 {
