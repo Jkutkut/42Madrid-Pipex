@@ -11,7 +11,6 @@ TITLE		=	\033[38;5;33m
 # Compile variables
 CC			=	gcc
 FLAGS		=	-Wall -Wextra -Werror
-# FLAGS		=	-Wall -Wextra -Werror -g -fsanitize=address
 HEADERS		=	-I ./include -I ./libft/include
 COMPILE		=	$(CC) $(FLAGS)
 
@@ -21,7 +20,7 @@ LIB			=	libft/libft.a
 
 NAME		=	pipex
 
-TOOLS		=	check_arg.c \
+SRC_FILES	=	check_arg.c \
 				close_fd.c \
 				close_fds.c \
 				end.c \
@@ -38,21 +37,36 @@ TOOLS		=	check_arg.c \
 				use_pipe.c \
 				waitpids.c
 
-#SRCS		=	${TOOLS:%=%}
-SRCS		=	${TOOLS:src/%=%} \
-				#$(NAME).c
+SRCS		=	${SRC_FILES:src/%=%}
 
 OBJS		=	${SRCS:%.c=bin/%.o}
 
 # Bonus
-# BONUS_SRCS	=	
-# BONUS_OBJS	=	${BONUS_SRCS:%.c=bin/%.o}
+BONUS_SRCS	=	check_arg_bonus.c \
+				close_fd_bonus.c \
+				close_fds_bonus.c \
+				end_bonus.c \
+				exe_cmd_bonus.c \
+				get_path_array_bonus.c \
+				get_path_bonus.c \
+				heredoc_bonus.c \
+				init_input_bonus.c \
+				init_output_bonus.c \
+				init_pipes_bonus.c \
+				init_pipex_bonus.c \
+				make_path_bonus.c \
+				pipex_bonus.c \
+				use_pipe_bonus.c \
+				waitpids_bonus.c
+
+B_SRCS		=	${BONUS_SRCS:%=bonus/%}
 
 
 # Makefile logic
 all: $(NAME)
 
-bonus: all # TODO DEBUG
+bonus:
+	make all SRCS="${B_SRCS}"
 
 
 # DEBUG
