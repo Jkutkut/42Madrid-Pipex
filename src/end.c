@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 10:44:21 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/10/18 17:17:05 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/10/21 15:46:28 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	ft_free_end(t_pipex *p, int endtype, char *msg)
 		ft_close_fds(p);
 		free(p->fds);
 	}
-	if (p->cmd_args) // TODO In linux, this is mandatory
+	if (p->cmd_args)
 		ft_free_array(p->cmd_args);
 	if (p->cmd_full)
 		free(p->cmd_full);
