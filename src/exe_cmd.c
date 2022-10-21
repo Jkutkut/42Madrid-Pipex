@@ -6,21 +6,22 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 17:18:21 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/10/20 10:00:05 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/10/21 18:38:01 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
 /**
- * @brief TODO
+ * @brief Executes the p->cmd_idº command.
  *
  *  Note: Pipes are closed before the cmd is executed because we have them
  *  on stdin and stdout.
  *  Note2: Pipes use the order given by the pipe cmd. This means:
  *  	pipefd[0] refers to the read end of the pipe.
  *  	pipefd[1] refers to the write end of the pipe.
- *  @param p TODO
+ *  @param p
+ *  @return pid of the child generated to execute the command.
  */
 int	ft_exe_cmd(t_pipex *p)
 {
