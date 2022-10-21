@@ -20,29 +20,16 @@ LIB			=	libft/libft.a
 
 NAME		=	pipex
 
-SRC_FILES	=	check_arg.c \
-				close_fd.c \
-				close_fds.c \
-				end.c \
-				exe_cmd.c \
-				get_path.c \
-				get_path_array.c \
-				heredoc.c \
-				init_input.c \
-				init_output.c \
-				init_pipes.c \
-				init_pipex.c \
-				make_path.c \
-				pipex.c \
-				use_pipe.c \
-				waitpids.c
+MANDATORY	=	pipex.c
 
-SRCS		=	${SRC_FILES:src/%=%}
 
-OBJS		=	${SRCS:%.c=bin/%.o}
+
+SRCS		=	${MANDATORY:%=src/mandatory/%}
+
+OBJS		=	${SRCS:src/%.c=bin/%.o}
 
 # Bonus
-BONUS_SRCS	=	check_arg_bonus.c \
+BONUS		=	check_arg_bonus.c \
 				close_fd_bonus.c \
 				close_fds_bonus.c \
 				end_bonus.c \
@@ -59,14 +46,14 @@ BONUS_SRCS	=	check_arg_bonus.c \
 				use_pipe_bonus.c \
 				waitpids_bonus.c
 
-B_SRCS		=	${BONUS_SRCS:%=bonus/%}
+BONUS_SRCS		=	${BONUS:%=src/bonus/%}
 
 
 # Makefile logic
 all: $(NAME)
 
 bonus:
-	make all SRCS="${B_SRCS}"
+	@make all SRCS="${BONUS_SRCS}"
 
 
 # DEBUG
