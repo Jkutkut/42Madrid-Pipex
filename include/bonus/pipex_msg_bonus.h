@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex_msg.h                                        :+:      :+:    :+:   */
+/*   pipex_msg_bonus.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 10:05:54 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/06/01 14:23:37 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/10/24 11:27:59 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_MSG_H
-# define PIPEX_MSG_H
+#ifndef PIPEX_MSG_BONUS_H
+# define PIPEX_MSG_BONUS_H
 
 # define ERROR_ARGC "Invalid arguments:\n./pipex <input> <cmd1> <cm2> <output>\n"
 # define ERROR_FORK "Error when creating the fork.\n"

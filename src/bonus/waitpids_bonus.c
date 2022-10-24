@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   waitpids.c                                         :+:      :+:    :+:   */
+/*   waitpids_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jre-gonz <jre-gonz@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 20:06:35 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/10/20 12:05:01 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/10/24 11:00:46 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "pipex_bonus.h"
 
 /**
  * @brief Wait for all pids to end and returns the exit code.

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   make_path.c                                        :+:      :+:    :+:   */
+/*   make_path_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 22:08:11 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/10/11 13:27:00 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/10/24 11:00:27 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "pipex_bonus.h"
 
 /**
  * @brief Creates a path to the given command. It concatenates following:

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_output.c                                      :+:      :+:    :+:   */
+/*   init_output_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 21:42:26 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/09/21 09:51:55 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/10/24 11:00:05 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "pipex_bonus.h"
 
 /**
  * @brief Having in mind heredoc, it readies the output file to be used.

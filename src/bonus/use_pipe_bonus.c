@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   use_pipe.c                                         :+:      :+:    :+:   */
+/*   use_pipe_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 13:41:16 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/10/17 15:12:58 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/10/24 11:00:39 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "pipex_bonus.h"
 
 /**
  * @brief Set's the given arguments as file descriptors of stdin and stdout.

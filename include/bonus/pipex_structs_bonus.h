@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex_structs.h                                    :+:      :+:    :+:   */
+/*   pipex_structs_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 09:33:44 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/10/17 15:37:18 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/10/24 11:27:49 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_STRUCTS_H
-# define PIPEX_STRUCTS_H
+#ifndef PIPEX_STRUCTS_BONUS_H
+# define PIPEX_STRUCTS_BONUS_H
 
-# include "pipex.h"
+# include "pipex_bonus.h"
 
 // /**
 //  * @struct t_pipex
