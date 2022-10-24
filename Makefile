@@ -11,8 +11,19 @@ TITLE		=	\033[38;5;33m
 # Compile variables
 CC			=	gcc
 FLAGS		=	-Wall -Wextra -Werror
-HEADERS		=	-I ./include -I ./libft/include
+COMPILE_TYPE=	mandatory
+HEADERS		=	-I ./include/${COMPILE_TYPE}/ -I ./libft/include/
 COMPILE		=	$(CC) $(FLAGS)
+
+# DEBUG
+OS	=	$(shell uname -s)
+ifeq ($(OS),Linux)
+debug: FLAGS += -pedantic -fsanitize=address -fsanitize=leak -fsanitize=undefined -fsanitize=bounds -fsanitize=null -g3
+endif
+ifeq ($(OS),Darwin)
+debug: FLAGS += -fsanitize=address -g3
+endif
+debug: $(NAME)
 
 # Code variables
 
@@ -21,8 +32,7 @@ LIB			=	libft/libft.a
 NAME		=	pipex
 
 MANDATORY	=	pipex.c
-
-
+				# TODO
 
 SRCS		=	${MANDATORY:%=src/mandatory/%}
 
@@ -52,22 +62,13 @@ BONUS_SRCS		=	${BONUS:%=src/bonus/%}
 # Makefile logic
 all: $(NAME)
 
+mandatory: all
+
 bonus:
-	@make all SRCS="${BONUS_SRCS}"
-
-
-# DEBUG
-OS	=	$(shell uname -s)
-ifeq ($(OS),Linux)
-debug: FLAGS += -pedantic -fsanitize=address -fsanitize=leak -fsanitize=undefined -fsanitize=bounds -fsanitize=null -g3
-endif
-ifeq ($(OS),Darwin)
-debug: FLAGS += -fsanitize=address -g3
-endif
-debug: $(NAME)
+	@make all SRCS="${BONUS_SRCS}" COMPILE_TYPE="bonus"
 
 $(NAME):	$(LIB) $(OBJS)
-	@echo "\n${TITLE}Compiling ${YELLOW}$(NAME)${NC}\c"
+	@echo "\n${TITLE}Compiling ${YELLOW}$(NAME)${NC} (${COMPILE_TYPE} version)\c"
 	@$(COMPILE) $(OBJS) $(HEADERS) $(LIB) -o $(NAME)
 	@echo "${LGREEN} [OK]${NC}\n"
 
