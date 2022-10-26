@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 10:48:50 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/10/24 10:59:43 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/10/26 21:04:49 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,14 @@ char	*ft_get_path(char *cmd, char **path_array)
 	if (!path_array || !cmd)
 		return (NULL);
 	i = 0;
-	if (access(cmd, 0) == 0)
+	if (access(cmd, X_OK) == 0)
 		return (cmd);
 	while (path_array[i])
 	{
 		path = ft_make_path(path_array[i], cmd);
 		if (!path)
 			return (NULL);
-		if (access(path, F_OK | X_OK) == 0)
+		if (access(path, X_OK) == 0)
 			return (path);
 		free(path);
 		i++;
