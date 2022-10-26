@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:50:54 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/10/24 11:00:20 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/10/26 18:53:55 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ void	ft_init_pipex(t_pipex *pipex, int argc, char **argv, char **envp)
 {
 	pipex->envp = envp;
 	ft_init_structure(pipex, argc - 3);
+	ft_init_output(pipex, argv[argc - 1]);
 	ft_init_input(pipex, &argc, &argv);
 	ft_init_pipes(pipex);
 	pipex->pid = malloc(sizeof(int) * pipex->cmd_count);
@@ -60,5 +61,4 @@ void	ft_init_pipex(t_pipex *pipex, int argc, char **argv, char **envp)
 			ft_free_end(pipex, 1, ERROR_MALLOC);
 		pipex->env_paths[0] = NULL;
 	}
-	ft_init_output(pipex, argv[argc - 1]);
 }
