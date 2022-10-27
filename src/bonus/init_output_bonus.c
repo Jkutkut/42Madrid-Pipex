@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 21:42:26 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/10/24 11:00:05 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/10/27 19:35:03 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,7 @@
  */
 void	ft_init_output(t_pipex *pipex, char *path)
 {
-	int	f_out_oflag;
-
-	if (pipex->heredoc)
-		f_out_oflag = O_WRONLY | O_CREAT | O_APPEND;
-	else
-		f_out_oflag = O_CREAT | O_RDWR | O_TRUNC;
-	pipex->f_output = open(path, f_out_oflag, 0000644);
+	pipex->f_output = open(path, O_WRONLY | O_CREAT | O_TRUNC, 0000644);
 	if (pipex->f_output == -1)
 		ft_end_error_file(1, pipex, path);
 }
