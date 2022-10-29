@@ -15,35 +15,23 @@ COMPILE_TYPE=	mandatory
 HEADERS		=	-I ./include/${COMPILE_TYPE}/ -I ./libft/include/
 COMPILE		=	$(CC) $(FLAGS)
 
-# DEBUG
-# OS	=	$(shell uname -s)
-# ifeq ($(OS),Linux)
-# debug: FLAGS += -pedantic -fsanitize=address -fsanitize=leak -fsanitize=undefined -fsanitize=bounds -fsanitize=null -g3
-# endif
-# ifeq ($(OS),Darwin)
-# debug: FLAGS += -fsanitize=address -g3
-# endif
-# debug: $(NAME)
-
 # Code variables
 
 LIB			=	libft/libft.a
 
 NAME		=	pipex
 
-MANDATORY	=	pipex.c \
-				init_pipex.c \
-				end.c \
-				get_path_array.c \
-				exe_cmd.c \
-				use_pipe.c \
-				close_fd.c \
+MANDATORY	=	close_fd.c \
 				close_fds.c \
+				end.c \
+				exe_cmd.c \
+				get_path_array.c \
 				get_path.c \
+				init_pipex.c \
 				make_path.c \
+				pipex.c \
+				use_pipe.c \
 				waitpids.c
-				# TODO
-				# TODO sort files
 
 SRCS		=	${MANDATORY:%=src/mandatory/%}
 
@@ -100,6 +88,17 @@ clean:
 	@echo "${LRED}Cleaning ${NC}libft"
 	@make fclean -C ./libft/
 
+# DEBUG
+OS	=	$(shell uname -s)
+ifeq ($(OS),Linux)
+debug: FLAGS += -pedantic -fsanitize=address -fsanitize=leak -fsanitize=undefined -fsanitize=bounds -fsanitize=null -g3
+endif
+ifeq ($(OS),Darwin)
+debug: FLAGS += -fsanitize=address -g3
+endif
+debug: $(NAME)
+
+# Cleanning
 
 fclean: clean
 	@echo "${LRED}Cleaning ${NC}$(NAME)\c"
@@ -107,7 +106,5 @@ fclean: clean
 	@echo "${LGREEN} [OK]${NC}\n"
 
 re: fclean all
-	@# make fclean
-	@# make all
 
 .PHONY: all re fclean clean
