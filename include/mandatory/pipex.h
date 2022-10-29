@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 09:57:44 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/10/24 11:40:44 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/10/29 17:48:32 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,30 +46,21 @@
 /****** Arguments parsing  ******/
 // // check_arg.c
 // int		ft_check_arg(int argc, char **argv, int *heredoc);
-// 
-// // init_pipex.c
-// void	ft_init_pipex(t_pipex *pipex, int argc, char **argv, char **envp);
-// 
-// // init_input.c
-// void	ft_init_input(t_pipex *pipex, int *argc, char ***argv);
-// 
+ 
+// init_pipex.c
+void	ft_init_pipex(t_pipex *pipex, int argc, char **argv, char **envp);
+ 
 // // init_pipes.c
 // void	ft_init_pipes(t_pipex *pipex);
-// 
-// // init_output.c
-// void	ft_init_output(t_pipex *pipex, char *path);
-// 
-// // heredoc.c
-// void	ft_heredoc(char *argv, t_pipex *pipex);
-// 
+ 
 // // get_path_array
 // char	**ft_get_path_array(char **envp);
 // 
-// /****** END LOGIC ******/
-// // end.c
-// void	ft_end_error_file(int type, t_pipex *pipex, char *file);
-// int		ft_free_end(t_pipex *p, int endtype, char *msg);
-// int		ft_end(int endtype, char *msg);
+/****** END LOGIC ******/
+// end.c
+void	ft_end_error_file(int type, t_pipex *pipex, char *file);
+int		ft_free_end(t_pipex *p, int endtype, char *msg);
+int		ft_end(int endtype, char *msg);
 // 
 // // close_fds.c
 // void	ft_close_fds(t_pipex *p);

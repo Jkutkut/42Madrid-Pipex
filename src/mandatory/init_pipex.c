@@ -6,11 +6,11 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:50:54 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/10/25 18:42:33 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/10/29 17:55:50 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex_bonus.h"
+#include "pipex.h"
 
 /**
  * @brief Inits the pipex structure with default values.
@@ -28,7 +28,6 @@ static void	ft_init_structure(t_pipex *pipex)
 	pipex->cmd_idx = 0;
 	pipex->cmd_args = NULL;
 	pipex->cmd_full = NULL;
-	pipex->pid = NULL;
 }
 
 /**
@@ -43,12 +42,16 @@ void	ft_init_pipex(t_pipex *pipex, int argc, char **argv, char **envp)
 {
 	pipex->envp = envp;
 	ft_init_structure(pipex);
+	pipex->f_output = open(argv[argc - 1], O_WRONLY | O_CREAT | O_TRUNC, 0644);
+	if (pipex->f_output == -1)
+		ft_end_error_file(1, pipex, argv[argc - 1]);
 	pipex->f_input = open(argv[1], O_RDONLY);
 	if (pipex->f_input == -1)
 		ft_end_error_file(0, pipex, argv[1]);
 	if (pipe(&(pipex->fds[0])) != 0 || pipe(&(pipex->fds[2])) != 0)
 		ft_free_end(pipex, 1, ERROR_PIPE_INIT);
-	pipex->cmds = argv + 2;
+	pipex->cmds[0] = *(argv + 2);
+	pipex->cmds[1] = *(argv + 3);
 	// pipex->env_paths = ft_get_path_array(envp);
 	// if (!pipex->env_paths)
 	// {
@@ -57,5 +60,4 @@ void	ft_init_pipex(t_pipex *pipex, int argc, char **argv, char **envp)
 	// 		ft_free_end(pipex, 1, ERROR_MALLOC);
 	// 	pipex->env_paths[0] = NULL;
 	// }
-	// ft_init_output(pipex, argv[argc - 1]);
 }

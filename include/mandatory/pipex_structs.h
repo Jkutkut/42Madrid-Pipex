@@ -6,14 +6,14 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 09:33:44 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/10/25 18:39:10 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/10/29 17:51:40 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PIPEX_STRUCTS_H
 # define PIPEX_STRUCTS_H
 
-# include "pipex_bonus.h"
+# include "pipex.h"
 
 /**
  * @struct t_pipex
@@ -27,7 +27,7 @@ typedef struct s_pipex
 	char	**envp;
 	char	**env_paths;
 	int		cmd_idx;
-	int		fds[2];
+	int		fds[4];
 	char	**cmd_args;
 	char	*cmd_full;
 	int		pid[2];

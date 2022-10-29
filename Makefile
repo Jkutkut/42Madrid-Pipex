@@ -16,14 +16,14 @@ HEADERS		=	-I ./include/${COMPILE_TYPE}/ -I ./libft/include/
 COMPILE		=	$(CC) $(FLAGS)
 
 # DEBUG
-OS	=	$(shell uname -s)
-ifeq ($(OS),Linux)
-debug: FLAGS += -pedantic -fsanitize=address -fsanitize=leak -fsanitize=undefined -fsanitize=bounds -fsanitize=null -g3
-endif
-ifeq ($(OS),Darwin)
-debug: FLAGS += -fsanitize=address -g3
-endif
-debug: $(NAME)
+# OS	=	$(shell uname -s)
+# ifeq ($(OS),Linux)
+# debug: FLAGS += -pedantic -fsanitize=address -fsanitize=leak -fsanitize=undefined -fsanitize=bounds -fsanitize=null -g3
+# endif
+# ifeq ($(OS),Darwin)
+# debug: FLAGS += -fsanitize=address -g3
+# endif
+# debug: $(NAME)
 
 # Code variables
 
@@ -31,8 +31,11 @@ LIB			=	libft/libft.a
 
 NAME		=	pipex
 
-MANDATORY	=	pipex.c
+MANDATORY	=	pipex.c \
+				init_pipex.c \
+				end.c
 				# TODO
+				# TODO sort files
 
 SRCS		=	${MANDATORY:%=src/mandatory/%}
 
@@ -60,9 +63,9 @@ BONUS_SRCS		=	${BONUS:%=src/bonus/%}
 
 
 # Makefile logic
-all: $(NAME)
+all: mandatory
 
-mandatory: all
+mandatory: $(NAME)
 
 bonus:
 	@make all SRCS="${BONUS_SRCS}" COMPILE_TYPE="bonus"
