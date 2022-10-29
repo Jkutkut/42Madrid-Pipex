@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 17:15:28 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/10/29 18:24:45 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/10/29 19:22:42 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 int	main(int argc, char **argv, char **envp)
 {
 	t_pipex	pipex;
-	// int		result;
+	int		result;
 
 	if (argc != 5)
 		ft_end(1, ERROR_ARGC);
@@ -32,8 +32,7 @@ int	main(int argc, char **argv, char **envp)
 		pipex.pid[pipex.cmd_idx] = ft_exe_cmd(&pipex);
 		pipex.cmd_idx++;
 	}
-	// ft_close_fds(&pipex);
-	// result = ft_waitpids(&pipex);
-	// return (ft_free_end(&pipex, WEXITSTATUS(result), NULL));
-	return 0;
+	ft_close_fds(&pipex);
+	result = ft_waitpids(&pipex);
+	return (ft_free_end(&pipex, WEXITSTATUS(result), NULL));
 }

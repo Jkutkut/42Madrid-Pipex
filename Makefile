@@ -40,7 +40,8 @@ MANDATORY	=	pipex.c \
 				close_fd.c \
 				close_fds.c \
 				get_path.c \
-				make_path.c
+				make_path.c \
+				waitpids.c
 				# TODO
 				# TODO sort files
 
