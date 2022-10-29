@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 10:44:21 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/10/29 19:10:46 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/10/29 19:32:23 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,17 +53,10 @@ int	ft_free_end(t_pipex *p, int endtype, char *msg)
 		ft_free_array(p->env_paths);
 	if (p->fds)
 		ft_close_fds(p);
-	// if (p->cmd_args)
-	// 	ft_free_array(p->cmd_args);
-	// if (p->cmd_full)
-	// 	free(p->cmd_full);
-	// if (p->heredoc)
-	// 	unlink(HEREDOC_FILE);
-	// if (p->pid)
-	// 	free(p->pid);
-	
-	(void) p->f_input;
-
+	if (p->cmd_args)
+		ft_free_array(p->cmd_args);
+	if (p->cmd_full)
+		free(p->cmd_full);
 	return (ft_end(endtype, msg));
 }
 
