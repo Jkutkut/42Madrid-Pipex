@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 09:57:44 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/10/29 19:22:21 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/10/29 19:43:56 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,19 +40,12 @@
 # define PIPE_READ 0
 # define PIPE_WRITE 1
 
-
 /********************************/
 
 /****** Arguments parsing  ******/
-// // check_arg.c
-// int		ft_check_arg(int argc, char **argv, int *heredoc);
- 
 // init_pipex.c
 void	ft_init_pipex(t_pipex *pipex, int argc, char **argv, char **envp);
- 
-// // init_pipes.c
-// void	ft_init_pipes(t_pipex *pipex);
- 
+
 // get_path_array
 char	**ft_get_path_array(char **envp);
 
@@ -71,7 +64,7 @@ void	ft_close_fd(int *fd);
 // /****** EXECUTION LOGIC ******/
 // exe_cmd.c
 int		ft_exe_cmd(t_pipex *p);
- 
+
 // use_pipe.c
 void	ft_use_pipe(int *fd_in, int *fd_out);
 

@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:50:54 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/10/29 18:23:56 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/10/29 19:43:08 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ void	ft_init_pipex(t_pipex *pipex, int argc, char **argv, char **envp)
 	pipex->f_input = open(argv[1], O_RDONLY);
 	if (pipex->f_input == -1)
 		ft_end_error_file(0, pipex, argv[1]);
-	// if (pipe(&(pipex->fds[0])) != 0 || pipe(&(pipex->fds[2])) != 0)
 	if (pipe(&(pipex->fds[0])) != 0)
 		ft_free_end(pipex, 1, ERROR_PIPE_INIT);
 	pipex->cmds[0] = *(argv + 2);
