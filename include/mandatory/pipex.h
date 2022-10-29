@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 09:57:44 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/10/29 18:47:32 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/10/29 19:14:20 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,12 +75,12 @@ int		ft_exe_cmd(t_pipex *p);
 // use_pipe.c
 void	ft_use_pipe(int *fd_in, int *fd_out);
 
-// // get_path.c
-// char	*ft_get_path(char *cmd_full, char **envp);
-// 
-// // make_path.c
-// char	*ft_make_path(char *path, char *cmd);
-// 
+// get_path.c
+char	*ft_get_path(char *cmd_full, char **envp);
+
+// make_path.c
+char	*ft_make_path(char *path, char *cmd);
+
 // // waitpids.c
 // int		ft_waitpids(t_pipex *p);
 

@@ -38,7 +38,9 @@ MANDATORY	=	pipex.c \
 				exe_cmd.c \
 				use_pipe.c \
 				close_fd.c \
-				close_fds.c
+				close_fds.c \
+				get_path.c \
+				make_path.c
 				# TODO
 				# TODO sort files
 
