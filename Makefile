@@ -33,7 +33,8 @@ NAME		=	pipex
 
 MANDATORY	=	pipex.c \
 				init_pipex.c \
-				end.c
+				end.c \
+				get_path_array.c
 				# TODO
 				# TODO sort files
 

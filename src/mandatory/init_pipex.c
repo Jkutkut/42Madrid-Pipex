@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:50:54 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/10/29 17:55:50 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/10/29 18:03:52 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,12 @@ void	ft_init_pipex(t_pipex *pipex, int argc, char **argv, char **envp)
 		ft_free_end(pipex, 1, ERROR_PIPE_INIT);
 	pipex->cmds[0] = *(argv + 2);
 	pipex->cmds[1] = *(argv + 3);
-	// pipex->env_paths = ft_get_path_array(envp);
-	// if (!pipex->env_paths)
-	// {
-	// 	pipex->env_paths = malloc(sizeof(char *));
-	// 	if (!pipex->env_paths)
-	// 		ft_free_end(pipex, 1, ERROR_MALLOC);
-	// 	pipex->env_paths[0] = NULL;
-	// }
+	pipex->env_paths = ft_get_path_array(envp);
+	if (!pipex->env_paths)
+	{
+		pipex->env_paths = malloc(sizeof(char *));
+		if (!pipex->env_paths)
+			ft_free_end(pipex, 1, ERROR_MALLOC);
+		pipex->env_paths[0] = NULL;
+	}
 }

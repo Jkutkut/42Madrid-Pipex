@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 09:57:44 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/10/29 17:48:32 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/10/29 18:04:22 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,9 @@ void	ft_init_pipex(t_pipex *pipex, int argc, char **argv, char **envp);
 // // init_pipes.c
 // void	ft_init_pipes(t_pipex *pipex);
  
-// // get_path_array
-// char	**ft_get_path_array(char **envp);
-// 
+// get_path_array
+char	**ft_get_path_array(char **envp);
+
 /****** END LOGIC ******/
 // end.c
 void	ft_end_error_file(int type, t_pipex *pipex, char *file);
