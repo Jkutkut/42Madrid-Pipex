@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 09:57:44 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/10/29 18:04:22 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/10/29 18:47:32 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,20 +61,20 @@ char	**ft_get_path_array(char **envp);
 void	ft_end_error_file(int type, t_pipex *pipex, char *file);
 int		ft_free_end(t_pipex *p, int endtype, char *msg);
 int		ft_end(int endtype, char *msg);
-// 
-// // close_fds.c
-// void	ft_close_fds(t_pipex *p);
-// 
-// // close_fd.c
-// void	ft_close_fd(int *fd);
-// 
+
+// close_fds.c
+void	ft_close_fds(t_pipex *p);
+
+// close_fd.c
+void	ft_close_fd(int *fd);
+
 // /****** EXECUTION LOGIC ******/
-// // exe_cmd.c
-// int		ft_exe_cmd(t_pipex *p);
-// 
-// // use_pipe.c
-// void	ft_use_pipe(int *fd_in, int *fd_out);
-// 
+// exe_cmd.c
+int		ft_exe_cmd(t_pipex *p);
+ 
+// use_pipe.c
+void	ft_use_pipe(int *fd_in, int *fd_out);
+
 // // get_path.c
 // char	*ft_get_path(char *cmd_full, char **envp);
 // 

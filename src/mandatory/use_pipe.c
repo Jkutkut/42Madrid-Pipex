@@ -1,35 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex_structs.h                                    :+:      :+:    :+:   */
+/*   use_pipe.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/21 09:33:44 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/10/29 18:24:13 by jre-gonz         ###   ########.fr       */
+/*   Created: 2022/04/23 13:41:16 by jre-gonz          #+#    #+#             */
+/*   Updated: 2022/10/29 18:33:06 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_STRUCTS_H
-# define PIPEX_STRUCTS_H
-
-# include "pipex.h"
+#include "pipex.h"
 
 /**
- * @struct t_pipex
- * @brief Struct to hold all the information of the pipex program.
+ * @brief Set's the given arguments as file descriptors of stdin and stdout.
+ * Closes the given file descriptors.
+ * 
+ * @param fd_in File descriptor of stdin.
+ * @param fd_out File descriptor of stdout.
  */
-typedef struct s_pipex
+void	ft_use_pipe(int *fd_in, int *fd_out)
 {
-	int		f_input;
-	int		f_output;
-	char	*cmds[2];
-	char	**envp;
-	char	**env_paths;
-	int		cmd_idx;
-	int		fds[2];
-	char	**cmd_args;
-	char	*cmd_full;
-	int		pid[2];
-}				t_pipex;
-#endif
+	dup2(*fd_in, STDIN);
+	dup2(*fd_out, STDOUT);
+	ft_close_fd(fd_in);
+	ft_close_fd(fd_out);
+}

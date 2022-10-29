@@ -1,35 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex_structs.h                                    :+:      :+:    :+:   */
+/*   close_fds.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/21 09:33:44 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/10/29 18:24:13 by jre-gonz         ###   ########.fr       */
+/*   Created: 2022/04/23 19:11:37 by jre-gonz          #+#    #+#             */
+/*   Updated: 2022/10/29 18:45:49 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_STRUCTS_H
-# define PIPEX_STRUCTS_H
-
-# include "pipex.h"
+#include "pipex.h"
 
 /**
- * @struct t_pipex
- * @brief Struct to hold all the information of the pipex program.
+ * @brief Closes all the file descriptors in the pipex program.
+ *
+ * @param p pipex structure with all the file descriptors.
  */
-typedef struct s_pipex
+void	ft_close_fds(t_pipex *p)
 {
-	int		f_input;
-	int		f_output;
-	char	*cmds[2];
-	char	**envp;
-	char	**env_paths;
-	int		cmd_idx;
-	int		fds[2];
-	char	**cmd_args;
-	char	*cmd_full;
-	int		pid[2];
-}				t_pipex;
-#endif
+	ft_close_fd(&p->fds[0]);
+	ft_close_fd(&p->fds[1]);
+	ft_close_fd(&p->f_input);
+	ft_close_fd(&p->f_output);
+}

@@ -1,35 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex_structs.h                                    :+:      :+:    :+:   */
+/*   close_fd.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/21 09:33:44 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/10/29 18:24:13 by jre-gonz         ###   ########.fr       */
+/*   Created: 2022/05/03 18:18:13 by jre-gonz          #+#    #+#             */
+/*   Updated: 2022/10/29 18:44:42 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_STRUCTS_H
-# define PIPEX_STRUCTS_H
-
-# include "pipex.h"
+#include "pipex.h"
 
 /**
- * @struct t_pipex
- * @brief Struct to hold all the information of the pipex program.
+ * @brief Closes the given fd. If null, nothing done.
+ * If closed, the null value is assigned as a check.
+ *
+ * @param fd File descriptor.
  */
-typedef struct s_pipex
+void	ft_close_fd(int *fd)
 {
-	int		f_input;
-	int		f_output;
-	char	*cmds[2];
-	char	**envp;
-	char	**env_paths;
-	int		cmd_idx;
-	int		fds[2];
-	char	**cmd_args;
-	char	*cmd_full;
-	int		pid[2];
-}				t_pipex;
-#endif
+	if (*fd == -1)
+		return ;
+	close(*fd);
+	*fd = -1;
+}
