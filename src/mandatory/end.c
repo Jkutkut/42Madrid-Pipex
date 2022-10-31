@@ -6,7 +6,7 @@
 /*   By: jre-gonz <jre-gonz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 10:44:21 by jre-gonz          #+#    #+#             */
-/*   Updated: 2022/10/29 19:32:23 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2022/10/31 14:55:34 by jre-gonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,7 @@ int	ft_free_end(t_pipex *p, int endtype, char *msg)
 		close(p->f_output);
 	if (p->env_paths)
 		ft_free_array(p->env_paths);
-	if (p->fds)
-		ft_close_fds(p);
+	ft_close_fds(p);
 	if (p->cmd_args)
 		ft_free_array(p->cmd_args);
 	if (p->cmd_full)
